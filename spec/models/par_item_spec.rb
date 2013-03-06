@@ -15,4 +15,8 @@ describe ParItem do
     FactoryGirl.build(:par_item, name: '').should_not be_valid
   end
 
+  it 'should have a unique name' do
+    par_item = FactoryGirl.create(:par_item)
+    FactoryGirl.build(:par_item, name: par_item.name)
+  end
 end

@@ -1,5 +1,5 @@
 class ParItem < ActiveRecord::Base
   attr_accessible :description, :name
 
-  validates_presence_of :name
+  validates :name, :presence => true, :uniqueness => true
 end
