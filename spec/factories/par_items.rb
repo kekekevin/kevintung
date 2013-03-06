@@ -1,8 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :par_item do
-    description "MyText"
-    name "MyString"
+    description Faker::Lorem.paragraph
+    name Faker::Lorem.word
   end
 end
