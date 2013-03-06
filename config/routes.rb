@@ -2,6 +2,8 @@ Kevintung::Application.routes.draw do
 
   match ':action' => 'static#:action', :as => :static
   
+  root :to => 'static#home'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
