@@ -1,10 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :par_sheet_item do
-    par_count "9.99"
+    par_count "2.2"
     count "9.99"
-    par_sheet nil
-    par_item nil
+    par_item 
   end
 end

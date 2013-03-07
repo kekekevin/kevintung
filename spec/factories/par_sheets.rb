@@ -1,7 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :par_sheet do
-    name "MyString"
+    name Faker::Lorem.word
+    par_sheet_items { [build(:par_sheet_item)] }
   end
 end
