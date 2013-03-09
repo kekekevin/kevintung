@@ -6,16 +6,15 @@ describe ParItem do
     FactoryGirl.create(:par_item).should be_valid
   end
 
-  it 'is invalid without a name' do
-    FactoryGirl.build(:par_item, name: nil).should_not be_valid
-  end
-
-  it 'is invalid with a blank name' do
-    FactoryGirl.build(:par_item, name: '').should_not be_valid
+  it 'should validate the presence of name' do
+    should validate_presence_of(:name)
   end
 
   it 'should have a unique name' do
-    par_item = FactoryGirl.create(:par_item)
-    FactoryGirl.build(:par_item, name: par_item.name)
+    should validate_uniqueness_of(:name)
+  end
+
+  it 'should have many ParSheetItems' do
+    should have_many(:par_sheet_items)
   end
 end
