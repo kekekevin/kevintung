@@ -1,5 +1,7 @@
 Kevintung::Application.routes.draw do
 
+  resources :par_items
+
   match ':action' => 'static#:action', :as => :static
   
   root :to => 'static#home'

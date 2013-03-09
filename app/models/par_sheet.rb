@@ -3,5 +3,5 @@ class ParSheet < ActiveRecord::Base
 
   has_many :par_sheet_items
 
-  validates :name, :presence => true
+  validates :name, presence: true
 end

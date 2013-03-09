@@ -5,6 +5,6 @@ class ParSheetItem < ActiveRecord::Base
 
   attr_accessible :count, :par_count
 
-  validates :par_count, :presence => true, :numericality => { :greater_than => 0 }
-  validates :count, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :par_count, presence: true, numericality: { greater_than: 0 }
+  validates :count, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
