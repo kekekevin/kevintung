@@ -3,12 +3,11 @@ require 'spec_helper'
 describe ParItemsController do
 
   it "should create an item" do
-    par_item = FactoryGirl.build(:par_item)
-    ParItem.should_receive(:new).and_return(par_item)
+    expect {
+      post :create, par_item: FactoryGirl.attributes_for(:par_item)
+    }.to change(ParItem, :count).by(1)
 
-    post :create, par_item: par_item.attributes
-
-    response.should redirect_to(par_item_path(par_item))
+    response.should redirect_to(ParItem.last)
   end
 
   it "should retrieve an item to be shown" do
@@ -48,13 +47,14 @@ describe ParItemsController do
   end
 
   it "should update an existing item" do
-    par_item = FactoryGirl.create(:par_item)
-    ParItem.should_receive(:update).and_return(par_item)
+    par_item = FactoryGirl.create(:par_item, name: 'existing')
 
-    put :update, id: par_item.id, par_item: par_item.attributes
+    put :update, id: par_item.id, par_item: FactoryGirl.attributes_for(:par_item) 
 
     assigns(:par_item).should eq(par_item)
     response.should redirect_to par_item_path(par_item)
+    par_item.reload
+    par_item.name.should_not eq('existing')
   end
 
   it "should destroy an existing item" do
