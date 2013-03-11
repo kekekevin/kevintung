@@ -1,2 +1,15 @@
-%h1 ParItems#show
-%p Find me in app/views/par_items/show.html.haml
+%h1
+  =@par_item.name
+
+%p
+  %ul
+    %li 
+      Description:
+      =@par_item.description
+
+%p  
+  %ul
+    %li
+      = link_to 'Edit', edit_par_item_path(@par_item)
+    %li
+      = link_to 'Back to all items', par_items_url

@@ -1,2 +1,9 @@
-%h1 ParItems#edit
-%p Find me in app/views/par_items/edit.html.haml
+%h1 Edit Item
+
+%p 
+  = render 'form'
+
+%p
+  %ul
+    %li
+      = link_to 'Back to all items', par_items_url

@@ -1,2 +1,24 @@
-%h1 ParItems#index
-%p Find me in app/views/par_items/index.html.haml
+%h1 Items
+
+%p
+  %table
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th Description
+        %th Action
+        
+    %tbody
+      - @par_items.each do |item|
+        %tr
+          %td 
+            %a
+              = link_to item.id, par_item_path(item)
+          %td 
+            = item.name
+          %td 
+            = item.description
+          %td
+            = link_to 'Edit', edit_par_item_path(item)
+            = link_to 'Delete', par_item_path(item), method: :delete
