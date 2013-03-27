@@ -1,2 +1,27 @@
-%h1 ParSheets#new
-%p Find me in app/views/par_sheets/new.html.haml
+%h1  Create a Par Sheet
+
+
+= simple_form_for @par_sheet do |sheet|
+  %p
+    %ul
+      %li
+        = sheet.input :name
+      %li
+        Add item
+      %li
+        Add unit of measurement
+  %p#sheet_items
+    %ul
+      %li
+        = sheet.simple_fields_for :par_sheet_items do |item|
+          = render 'sheet_item', item: item 
+      %li
+        = link_to 'Add Item', '#'
+    %ul
+      %li
+        = sheet.submit 'Submit'
+
+    %script#sheet_item_template{ type: 'text/x-handlebars-template' }
+      - par_sheet_item = ParSheetItem.new
+      = sheet.simple_fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
+        = render 'sheet_item', item: item
