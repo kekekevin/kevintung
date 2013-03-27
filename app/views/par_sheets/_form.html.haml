@@ -1,0 +1,23 @@
+= simple_form_for @par_sheet do |sheet|
+  %p
+    %ul
+      %li
+        = sheet.input :name
+      %li
+        Add item
+      %li
+        Add unit of measurement
+  %p
+    %ul#sheet_items
+      = sheet.simple_fields_for :par_sheet_items do |item|
+        = render 'sheet_item', item: item 
+    %ul
+      %li
+        = sheet.submit 'Submit'
+      %li
+        = link_to 'Add Item', '#', class: 'add_item'
+ 
+    %script#sheet_item_template{ type: 'text/x-handlebars-template' }
+      - par_sheet_item = ParSheetItem.new
+      = sheet.simple_fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
+        = render 'sheet_item', item: item
