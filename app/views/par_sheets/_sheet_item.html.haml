@@ -1,8 +1,4 @@
-%li.sheet_item
-  %ul
-    %li
-      = item.input :count
-    %li
-      = item.input :par_count
-    %li
-      = link_to 'Remove', '#', class: 'remove'
+.sheet_item
+  = item.input :count
+  = item.input :par_count
+  = link_to 'Remove', '#', class: 'remove'

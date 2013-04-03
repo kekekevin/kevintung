@@ -6,8 +6,11 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body{class: "#{controller_name} #{action_name}"}
-    %ul
-      %li About Me
-      %li Projects
-      %li Connect
-    = yield
+    .container-fluid
+      .row-fluid
+        .span3 About Me
+        .span3 Projects
+        .span3 Connect
+      .row-fluid
+        .span12
+          = yield
