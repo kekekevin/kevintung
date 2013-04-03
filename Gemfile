@@ -10,6 +10,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'factory_girl_rails'
+  gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
 end
 
 group :test do
