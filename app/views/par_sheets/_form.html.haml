@@ -1,7 +1,5 @@
 = simple_form_for @par_sheet, html: { class: 'form-horizontal' } do |sheet|
-
-  %fieldset
-    = sheet.input :name
+  = sheet.input :name
   #sheet_items
     = sheet.simple_fields_for :par_sheet_items do |item|
       = render 'sheet_item', item: item 
