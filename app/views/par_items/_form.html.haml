@@ -1,5 +1,6 @@
-= simple_form_for @par_item do |item|
+= simple_form_for @par_item, html: { class: 'form-horizontal' } do |item|
   = item.input :name
   = item.input :description
-  = item.submit 'Submit'
+  .form-actions
+    = item.submit 'Submit', class: 'btn-primary'
  

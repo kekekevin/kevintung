@@ -1,27 +1,25 @@
 %h1 Items
 
-%p
-  %ul
-    %li
-      = link_to 'Add Item', new_par_item_path
-  %table
-    %thead
+= link_to 'Add Item', new_par_item_path
+%table.table.table-hover
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Description
+      %th Action
+      
+  %tbody
+    - @par_items.each do |item|
       %tr
-        %th ID
-        %th Name
-        %th Description
-        %th Action
-        
-    %tbody
-      - @par_items.each do |item|
-        %tr
-          %td 
-            %a
-              = link_to item.id, par_item_path(item)
-          %td 
-            = item.name
-          %td 
-            = item.description
-          %td
-            = link_to 'Edit', edit_par_item_path(item)
-            = link_to 'Delete', par_item_path(item), method: :delete
+        %td 
+          %a
+            = link_to item.id, par_item_path(item)
+        %td 
+          = item.name
+        %td 
+          = item.description
+        %td
+          = link_to 'Edit', edit_par_item_path(item)
+          \/
+          = link_to 'Delete', par_item_path(item), method: :delete
