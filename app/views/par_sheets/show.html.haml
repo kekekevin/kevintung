@@ -1,2 +1,21 @@
-%h1 ParSheets#show
-%p Find me in app/views/par_sheets/show.html.haml
+%h1 
+  Sheet:
+  =@par_sheet.name
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Item Name
+      %th
+        Count
+      %th
+        Par Value
+  %tbody
+    -@par_sheet.par_sheet_items.each do |i|
+      %tr
+        %td
+          =i.par_item.name
+        %td
+          =i.count
+        %td
+          =i.par_count
