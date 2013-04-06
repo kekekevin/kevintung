@@ -10,7 +10,9 @@ parSheets = do ->
     $('#sheet_items').append(template(context))
     $('.remove').click(parSheets.removeItem)
   removeItem: ->
-    $(this).closest('.sheet_item').remove()
+    sheet_item = $(this).closest('.sheet_item')
+    sheet_item.find('[id$=destroy]').val('true')
+    sheet_item.hide()
 
 window.parSheets = parSheets
 
