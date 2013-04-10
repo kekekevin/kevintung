@@ -3,11 +3,11 @@
     %button.close{ type: 'button', "data-dismiss" => 'modal' }
       &times;
     %h3
-      Add an item
+      Create a new item
   .modal-body
     = simple_form_for ParItem.new do |item|
       = render 'par_items/form_body', item: item
   .modal-footer
-    = link_to 'Cancel', '#', class: 'btn'
-    = link_to 'Save', '#', class: 'btn btn-primary'
+    = link_to 'Cancel', '#', class: 'btn cancel'
+    = link_to 'Save', '#', class: 'btn btn-primary save'
 

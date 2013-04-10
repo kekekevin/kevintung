@@ -6,7 +6,7 @@
   .form-actions 
     = sheet.submit 'Save', class: 'btn-primary'
     = link_to 'Add Item', '#', class: 'btn add_item'
-    = link_to 'Add unit of measurement', '#', class: 'btn'
+    = link_to 'Create a New Item', '#', class: 'btn create_item'
     = link_to 'Cancel', par_sheets_url, class: 'btn btn-danger'
  
     %script#sheet_item_template{ type: 'text/x-handlebars-template' }
@@ -14,4 +14,4 @@
       = sheet.simple_fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
         = render 'sheet_item', item: item
 
-= render 'add_item_modal'
+= render 'create_item_modal'
