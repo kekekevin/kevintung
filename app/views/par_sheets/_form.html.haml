@@ -4,9 +4,10 @@
     = sheet.simple_fields_for :par_sheet_items do |item|
       = render 'sheet_item', item: item 
   .form-actions 
-    = sheet.submit 'Submit', class: 'btn-primary'
-    = link_to 'Add Item', '#', class: 'btn btn-link add_item'
-    = link_to 'Add unit of measurement', '#', class: 'btn btn-link'
+    = sheet.submit 'Save', class: 'btn-primary'
+    = link_to 'Add Item', '#', class: 'btn add_item'
+    = link_to 'Add unit of measurement', '#', class: 'btn'
+    = link_to 'Cancel', par_sheets_url, class: 'btn btn-danger'
  
     %script#sheet_item_template{ type: 'text/x-handlebars-template' }
       - par_sheet_item = ParSheetItem.new
