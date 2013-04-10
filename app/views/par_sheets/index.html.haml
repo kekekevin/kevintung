@@ -1,6 +1,5 @@
 %h1 Par Sheets 
 
-= link_to 'Create a new par sheet', new_par_sheet_path
 %table.table.table-hover
   %thead
     %tr
@@ -17,6 +16,7 @@
         %td 
           = sheet.name
         %td
-          = link_to 'Edit', edit_par_sheet_path(sheet)
-          \/
-          = link_to 'Delete', par_sheet_path(sheet), method: :delete
+          = link_to 'Edit', edit_par_sheet_path(sheet), class: 'btn'
+          = link_to 'Delete', par_sheet_path(sheet), method: :delete, class: 'btn btn-danger'
+
+= link_to 'Create a new par sheet', new_par_sheet_path, class: 'btn btn-primary'
