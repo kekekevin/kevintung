@@ -3,8 +3,10 @@
 %ul#sheet_items
   %li.sheet_item
     %input#_destroy{ value: "false" }
+    %select.item-select
 
 .modal
-
+  %form
+    %input{ value: "original" }
 %script#sheet_item_template{ type: 'text/x-handlebars-template' }
   %li.sheet_item

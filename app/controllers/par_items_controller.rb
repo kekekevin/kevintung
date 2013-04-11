@@ -11,7 +11,10 @@ class ParItemsController < ApplicationController
     @par_item = ParItem.new(params[:par_item])
     @par_item.save
 
-    redirect_to @par_item
+    respond_to do |format|
+      format.html { redirect_to @par_item }
+      format.json { render json: @par_item }
+    end
   end
 
   def edit

@@ -29,3 +29,16 @@ describe "Par Sheets", ->
     it "should hide the create item modal", ->
       parSheets.closeCreateItemModal()
       expect($('.modal:visible').length).toBe(1)
+
+    it "should reset the form", ->
+      $('.modal input').val('foobar')
+      parSheets.closeCreateItemModal()
+      expect($('.modal input').val()).toBe('original')
+
+
+  describe "add select option", ->
+    it "should add the option to the select tag", ->
+      parSheets.addSelectOption('name', 'id')
+      expect($('.item-select option').length).toBe(1)
+      expect($('.item-select option').val()).toBe('id')
+      expect($('.item-select option').text()).toBe('name')

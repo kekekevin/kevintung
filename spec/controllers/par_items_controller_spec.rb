@@ -2,12 +2,20 @@ require 'spec_helper'
 
 describe ParItemsController do
 
-  it "should create an item" do
-    expect {
-      post :create, par_item: FactoryGirl.attributes_for(:par_item)
-    }.to change(ParItem, :count).by(1)
+  describe "create item" do
+    it "should create an item" do
+      expect {
+        post :create, par_item: FactoryGirl.attributes_for(:par_item)
+      }.to change(ParItem, :count).by(1)
 
-    response.should redirect_to(ParItem.last)
+      response.should redirect_to(ParItem.last)
+    end
+
+    it "should respond to json" do
+      post :create, par_item: FactoryGirl.attributes_for(:par_item), format: :json
+
+      response.body.should == ParItem.last.to_json
+    end
   end
 
   it "should retrieve an item to be shown" do

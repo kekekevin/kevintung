@@ -1,6 +1,6 @@
 .sheet_item
   = item.input :par_item_id, label: 'Item' do
-    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }
+    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select' }
     = link_to 'Remove', '#', class: 'remove btn btn-link'
   = item.input :count
   = item.input :par_count
