@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306041952) do
+ActiveRecord::Schema.define(:version => 20130412020422) do
 
   create_table "par_items", :force => true do |t|
     t.text     "description"
@@ -37,5 +37,24 @@ ActiveRecord::Schema.define(:version => 20130306041952) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "prep_sheet_items", :force => true do |t|
+    t.integer  "prep_sheet_id"
+    t.decimal  "count"
+    t.integer  "par_item_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "prep_sheet_items", ["par_item_id"], :name => "index_prep_sheet_items_on_par_item_id"
+  add_index "prep_sheet_items", ["prep_sheet_id"], :name => "index_prep_sheet_items_on_prep_sheet_id"
+
+  create_table "prep_sheets", :force => true do |t|
+    t.integer  "par_sheet_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "prep_sheets", ["par_sheet_id"], :name => "index_prep_sheets_on_par_sheet_id"
 
 end
