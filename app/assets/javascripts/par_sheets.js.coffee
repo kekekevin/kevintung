@@ -1,7 +1,5 @@
 parSheets = do ->
   init: (options) ->
-    @options = options || {}
-    @ajax = @options.ajax || $.ajax
     $('.add_item').click(parSheets.addItem)
     $('.remove').click(parSheets.removeItem)
     $('.create_item').click(parSheets.openCreateItemModal)
@@ -28,7 +26,7 @@ parSheets = do ->
   createItem: ->
     data = $('.modal form').serialize()
 
-    @ajax(
+    $.ajax(
       url: '/par_items.json'
       type: 'POST'
       data: data
@@ -43,7 +41,6 @@ parSheets = do ->
     $('.item-select').each( (index, element) ->
       $(element).append($('<option>', { value: id }).text(name))
     )
-    
 
 window.parSheets = parSheets
 

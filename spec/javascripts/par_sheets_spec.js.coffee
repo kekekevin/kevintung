@@ -35,10 +35,27 @@ describe "Par Sheets", ->
       parSheets.closeCreateItemModal()
       expect($('.modal input').val()).toBe('original')
 
-
   describe "add select option", ->
     it "should add the option to the select tag", ->
       parSheets.addSelectOption('name', 'id')
       expect($('.item-select option').length).toBe(1)
       expect($('.item-select option').val()).toBe('id')
       expect($('.item-select option').text()).toBe('name')
+
+  describe "create item", ->
+    beforeEach ->
+      spyOn($, 'ajax').andCallFake (params) ->
+        params.success(
+          name: 'foo'
+          id: 'bar'
+        )
+      parSheets.createItem()
+
+    it "should persist the data", ->
+      expect($.ajax).toHaveBeenCalled()
+
+    it "should add a select option with the saved item", ->
+      expect($('.item-select option').length).toBe(1)
+
+    it "should close the modal", ->
+      expect($('.modal:visible').length).toBe(1)
