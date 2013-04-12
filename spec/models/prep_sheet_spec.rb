@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe PrepSheet do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "should belong to a par_sheet" do
+    should belong_to(:par_sheet)
+  end
+
 end

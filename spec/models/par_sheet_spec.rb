@@ -14,4 +14,8 @@ describe ParSheet do
     should have_many(:par_sheet_items)
   end
 
+  it 'should have many PrepSheets' do
+    should have_many(:prep_sheets)
+  end
+
 end
