@@ -1,6 +1,10 @@
-.sheet_item
-  = item.input :par_item_id, label: 'Item' do
-    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select' }
+.sheet_item.control-group.row-fluid
+  .span3
+    = item.label :par_item_id, 'Item'
+    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select input-large' }
+
+  .span9
+    = item.label :par_count, 'Par Value'
+    = item.text_field :par_count, class: 'input-mini'
     = link_to 'Remove', '#', class: 'remove btn btn-link'
-  = item.input :par_count
-  = item.input :_destroy, as: :hidden
+    = item.hidden_field :_destroy, as: :hidden

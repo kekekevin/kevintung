@@ -1,17 +1,20 @@
-= simple_form_for @par_sheet, html: { class: 'form-horizontal' } do |sheet|
-  = sheet.input :name
+= form_for @par_sheet, html: { class: 'form-inline' } do |sheet|
+  .control-group
+    = sheet.label :name, 'Name'
+    = sheet.text_field :name
+    = link_to 'Add Item to inventory', '#', class: 'btn add_item'
+    = link_to 'New Item', '#', class: 'btn btn-link create_item'
   #sheet_items
-    = sheet.simple_fields_for :par_sheet_items do |item|
+    %legend Inventory
+    = sheet.fields_for :par_sheet_items do |item|
       = render 'sheet_item', item: item 
   .form-actions 
     = sheet.submit 'Save', class: 'btn-primary'
-    = link_to 'Add Item', '#', class: 'btn add_item'
-    = link_to 'Create a New Item', '#', class: 'btn create_item'
     = link_to 'Cancel', par_sheets_url, class: 'btn btn-danger'
  
     %script#sheet_item_template{ type: 'text/x-handlebars-template' }
       - par_sheet_item = ParSheetItem.new
-      = sheet.simple_fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
+      = sheet.fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
         = render 'sheet_item', item: item
 
 = render 'create_item_modal'
