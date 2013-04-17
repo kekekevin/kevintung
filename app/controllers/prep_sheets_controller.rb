@@ -5,11 +5,9 @@ class PrepSheetsController < ApplicationController
   end
 
   def create
-    par_sheet = ParSheet.find(params[:par_sheet_id])
+  end
 
-    @prep_sheet = PrepSheet.new_from_par_sheet(par_sheet)
-    @prep_sheet.save
-    redirect_to par_sheet_prep_sheet_path(par_sheet.id, @prep_sheet.id)
+  def new
   end
 
   def destroy

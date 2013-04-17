@@ -48,7 +48,7 @@ describe ParSheetsController do
 
   it 'should update an existing par sheet' do
     par_sheet = FactoryGirl.create(:par_sheet, name: 'existing')
-    par_sheet.par_sheet_items[0].count = '3'
+    par_sheet.par_sheet_items[0].par_count = '3'
 
     put :update, id: par_sheet.id, par_sheet: FactoryGirl.attributes_for(:par_sheet)
     
@@ -56,7 +56,7 @@ describe ParSheetsController do
     response.should redirect_to(par_sheet)
     par_sheet.reload
     par_sheet.name.should_not eq('existing')
-    par_sheet.par_sheet_items[0].count.should_not eq('3')
+    par_sheet.par_sheet_items[0].par_count.should_not eq('3')
   end
 
   it 'should destroy an existing par sheet' do

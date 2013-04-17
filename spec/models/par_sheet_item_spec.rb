@@ -10,10 +10,6 @@ describe ParSheetItem do
     should validate_presence_of(:par_count)
   end
 
-  it 'should validate presence of count' do
-    should validate_presence_of(:count)
-  end
-
   it 'should belong to a ParSheet' do
     should belong_to(:par_sheet)
   end
@@ -32,18 +28,6 @@ describe ParSheetItem do
 
   it 'should be valid with a positive par_count' do
     FactoryGirl.build(:par_sheet_item, par_count: '2').should be_valid
-  end
-
-  it 'should be valid with a positive count' do
-    FactoryGirl.build(:par_sheet_item, count: '2').should be_valid
-  end
-
-  it 'should be invalid with a negative count' do
-    FactoryGirl.build(:par_sheet_item, count: '-1').should_not be_valid
-  end
-
-  it 'should be valid with a zero count' do
-    FactoryGirl.build(:par_sheet_item, count: '0').should be_valid
   end
 
 end

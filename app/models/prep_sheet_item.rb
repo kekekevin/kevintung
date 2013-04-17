@@ -2,7 +2,7 @@ class PrepSheetItem < ActiveRecord::Base
   belongs_to :prep_sheet
   belongs_to :par_item
 
-  attr_accessible :count
+  attr_accessible :prep_count
 
-  validates :count, presence: true, numericality: { greater_than: 0 }  
+  validates :prep_count, presence: true, numericality: { greater_than: 0 }  
 end

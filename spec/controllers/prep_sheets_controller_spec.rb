@@ -16,9 +16,10 @@ describe PrepSheetsController do
 
   describe "create" do
     it "should create a new prep sheet" do
+      pending
       par_sheet = FactoryGirl.create(:par_sheet)
 
-      post :create, par_sheet_id: par_sheet.id
+      post :create, par_sheet_id: par_sheet.id, prep_sheet: FactoryGirl.attributes_for(:prep_sheet)
 
       assigns(:prep_sheet)
       response.should redirect_to par_sheet_prep_sheet_path(par_sheet, PrepSheet.last.id)

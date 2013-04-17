@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :prep_sheet do
-    par_sheet nil
+    par_sheet
   end
 end

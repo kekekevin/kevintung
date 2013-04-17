@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :prep_sheet_item do
-    prep_sheet nil
-    count "9.99"
-    par_item nil
+    count "2"
+    prep_count "1"
+    par_item
   end
 end
