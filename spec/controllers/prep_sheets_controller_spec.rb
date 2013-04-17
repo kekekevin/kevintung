@@ -16,7 +16,6 @@ describe PrepSheetsController do
 
   describe "create" do
     it "should create a new prep sheet" do
-      pending "need to create prep sheet factory"
       par_sheet = FactoryGirl.create(:par_sheet)
 
       post :create, par_sheet_id: par_sheet.id
@@ -36,6 +35,16 @@ describe PrepSheetsController do
       }.to change(PrepSheet, :count).by(-1)
 
       response.should redirect_to par_sheet_prep_sheets_url(par_sheet)
+    end
+
+    it "should not destroy a prep sheet that does not belong to the par sheet" do
+      par_sheet = FactoryGirl.create(:par_sheet)
+      prep_sheet = FactoryGirl.create(:prep_sheet, par_sheet_id: par_sheet.id)
+
+      expect {
+        delete :destroy, par_sheet_id: par_sheet.id, id: '9'
+      }.to change(PrepSheet, :count).by(0)
+
     end
   end
 
