@@ -29,11 +29,9 @@ describe ParSheetsController do
   end
 
   it 'should create a new sheet' do
-    ParSheet.should_receive(:new)
-
     get :new
 
-    assigns(:par_sheet)
+    assigns(:par_sheet).should be_a_new(ParSheet)
     response.should render_template(:new)
   end
 
@@ -42,7 +40,7 @@ describe ParSheetsController do
       post :create, par_sheet: FactoryGirl.attributes_for(:par_sheet)
     }.to change(ParSheet, :count).by(1)
 
-    assigns(:par_sheet)
+    assigns(:par_sheet).should_not be_nil
     response.should redirect_to(ParSheet.last)
   end
 
@@ -52,7 +50,7 @@ describe ParSheetsController do
 
     put :update, id: par_sheet.id, par_sheet: FactoryGirl.attributes_for(:par_sheet)
     
-    assigns(:par_sheet)
+    assigns(:par_sheet).should_not be_nil
     response.should redirect_to(par_sheet)
     par_sheet.reload
     par_sheet.name.should_not eq('existing')

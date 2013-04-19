@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417031158) do
+ActiveRecord::Schema.define(:version => 20130419010802) do
 
   create_table "par_items", :force => true do |t|
     t.text     "description"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130417031158) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.decimal  "prep_count"
+    t.decimal  "par_count"
   end
 
   add_index "prep_sheet_items", ["par_item_id"], :name => "index_prep_sheet_items_on_par_item_id"

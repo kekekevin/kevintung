@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe PrepSheetsController do
+  describe "new" do
+    it "should return  a new prep sheet from the par sheet" do
+      par_sheet = FactoryGirl.create(:par_sheet)
+      
+      get :new, par_sheet_id: par_sheet.id
+
+      assigns(:prep_sheet).should_not be_nil
+      response.should render_template(:new)
+    end
+  end
 
   describe "index" do
     it "should return all prep sheets for a par sheet" do
@@ -16,12 +26,11 @@ describe PrepSheetsController do
 
   describe "create" do
     it "should create a new prep sheet" do
-      pending
       par_sheet = FactoryGirl.create(:par_sheet)
 
-      post :create, par_sheet_id: par_sheet.id, prep_sheet: FactoryGirl.attributes_for(:prep_sheet)
+      post :create, par_sheet_id: par_sheet.id, prep_sheet: FactoryGirl.attributes_for(:prep_sheet, par_sheet_id: par_sheet.id)
 
-      assigns(:prep_sheet)
+      assigns(:prep_sheet).should_not be_nil
       response.should redirect_to par_sheet_prep_sheet_path(par_sheet, PrepSheet.last.id)
     end
   end
