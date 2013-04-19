@@ -12,8 +12,8 @@ class PrepSheetsController < ApplicationController
   end
 
   def new
-    par_sheet = ParSheet.find(params[:par_sheet_id])
-    @prep_sheet = PrepSheet.new_from_par_sheet(par_sheet)
+    @par_sheet = ParSheet.find(params[:par_sheet_id])
+    @prep_sheet = PrepSheet.new_from_par_sheet(@par_sheet)
   end
 
   def destroy

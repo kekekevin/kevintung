@@ -1,6 +1,6 @@
 = form_for @par_sheet, html: { class: 'form-inline' } do |sheet|
   .control-group
-    = sheet.label :name, 'Name'
+    = sheet.label :name, 'Name: '
     = sheet.text_field :name
     = link_to 'Add Item to inventory', '#', class: 'btn add_item'
     = link_to 'New Item', '#', class: 'btn btn-link create_item'
@@ -9,7 +9,7 @@
     = sheet.fields_for :par_sheet_items do |item|
       = render 'sheet_item', item: item 
   .form-actions 
-    = sheet.submit 'Save', class: 'btn-primary'
+    = sheet.submit 'Save', class: 'btn btn-primary'
     = link_to 'Cancel', par_sheets_url, class: 'btn btn-danger'
  
     %script#sheet_item_template{ type: 'text/x-handlebars-template' }

@@ -16,6 +16,7 @@ class PrepSheet < ActiveRecord::Base
       item = PrepSheetItem.new
       item.par_count = i.par_count
       item.count = 0
+      item.par_item = i.par_item
       prep_sheet.prep_sheet_items.push( item )
     end
     prep_sheet.par_sheet = par_sheet

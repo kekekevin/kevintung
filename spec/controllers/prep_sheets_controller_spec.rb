@@ -8,6 +8,7 @@ describe PrepSheetsController do
       get :new, par_sheet_id: par_sheet.id
 
       assigns(:prep_sheet).should_not be_nil
+      assigns(:par_sheet).should eq(par_sheet)
       response.should render_template(:new)
     end
   end
