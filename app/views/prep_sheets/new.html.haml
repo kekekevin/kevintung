@@ -7,6 +7,7 @@
 %legend I have...
 
 = form_for [@par_sheet, @prep_sheet], html: { class: 'form-inline' } do |sheet|
+  = sheet.hidden_field :par_sheet_id
   = sheet.fields_for :prep_sheet_items do |item|
     .control-group.row-fluid
       .span12
@@ -16,6 +17,7 @@
         = item.object.par_item.name
         and I need 
         = item.object.par_count
+        = item.hidden_field :par_count
         unit(s)
 
   .form-actions
