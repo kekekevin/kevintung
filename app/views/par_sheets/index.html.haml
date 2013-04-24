@@ -5,7 +5,8 @@
     %tr
       %th ID
       %th Name
-      %th Action
+      %th Prep Sheet Actions
+      %th Actions
       
   %tbody
     - @par_sheets.each do |sheet|
@@ -16,7 +17,9 @@
         %td 
           = sheet.name
         %td
-          = link_to 'Make a par sheet', new_par_sheet_prep_sheet_path(sheet), class: 'btn btn-primary'
+          = link_to 'Make a prep sheet', new_par_sheet_prep_sheet_path(sheet), class: 'btn btn-primary'
+          = link_to 'View old prep sheets', par_sheet_prep_sheets_url(sheet.id), class: 'btn'
+        %td
           = link_to 'Edit', edit_par_sheet_path(sheet), class: 'btn'
           = link_to 'Delete', par_sheet_path(sheet), method: :delete, class: 'btn btn-danger'
 

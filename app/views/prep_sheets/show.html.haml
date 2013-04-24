@@ -1,2 +1,23 @@
-%h1 PrepSheet#show
-%p Find me in app/views/prep_sheet/show.html.haml
+%h1 And then we need to prep 
+
+%h2
+  Sheet:
+  = @prep_sheet.par_sheet.name
+  generated at
+  = @prep_sheet.created_at.strftime '%l:%M:%S %p %m/%d/%Y %Z'
+%legend I need...
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Count
+      %th
+        Item
+  %tbody
+    - @prep_sheet.prep_sheet_items.each do |item|
+      %tr
+        %td
+          = item.prep_count
+        %td
+          = item.par_item.name

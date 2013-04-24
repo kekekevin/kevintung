@@ -1,7 +1,8 @@
 class PrepSheetsController < ApplicationController
   
   def index
-    @prep_sheets = ParSheet.find(params[:par_sheet_id]).prep_sheets
+    @par_sheet = ParSheet.find(params[:par_sheet_id])
+    @prep_sheets = @par_sheet.prep_sheets
   end
 
   def create

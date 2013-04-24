@@ -1,2 +1,25 @@
-%h1 PrepSheet#index
-%p Find me in app/views/prep_sheet/index.html.haml
+%h1 Calculated Prep Sheets
+
+%h2
+  Sheet:
+  =@par_sheet.name
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ID
+      %th
+        Created At
+      %th
+        Action
+  %tbody
+    -@par_sheet.prep_sheets.each do |sheet|
+      %tr
+        %td
+          = link_to sheet.id, par_sheet_prep_sheet_path(@par_sheet.id, sheet.id)
+        %td
+          = sheet.created_at.strftime '%l:%M:%S %p %m/%d/%Y %Z'
+        %td
+          = link_to 'Delete', par_sheet_prep_sheet_path(@par_sheet.id, sheet.id), method: 'delete', class: 'btn btn-danger'
+

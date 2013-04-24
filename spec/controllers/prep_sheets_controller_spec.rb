@@ -14,15 +14,26 @@ describe PrepSheetsController do
   end
 
   describe "index" do
+
+    before(:each) do
+      @par_sheet = FactoryGirl.create(:par_sheet)
+      @prep_sheet = FactoryGirl.create(:prep_sheet, par_sheet_id: @par_sheet.id)
+
+      get :index, par_sheet_id: @par_sheet.id
+    end
+
     it "should return all prep sheets for a par sheet" do
-      par_sheet = FactoryGirl.create(:par_sheet)
-      prep_sheet = FactoryGirl.create(:prep_sheet, par_sheet_id: par_sheet.id)
+      assigns(:prep_sheets).should eq([@prep_sheet])
+    end
+    
+    it "should return the par sheet" do
+      assigns(:par_sheet).should eq(@par_sheet)
+    end
 
-      get :index, par_sheet_id: par_sheet.id
-
-      assigns(:prep_sheets).should eq([prep_sheet])
+    it "should render index" do
       response.should render_template(:index)
     end
+
   end
 
   describe "create" do
