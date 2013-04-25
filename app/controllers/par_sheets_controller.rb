@@ -26,7 +26,10 @@ class ParSheetsController < ApplicationController
   def update
     @par_sheet = ParSheet.update(params[:id], params[:par_sheet])
 
-    redirect_to @par_sheet
+    respond_to do |format|
+      format.html { redirect_to @par_sheet }
+      format.json { render json: @par_sheet }
+    end
   end
 
   def destroy

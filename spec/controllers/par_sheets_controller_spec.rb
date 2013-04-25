@@ -44,17 +44,29 @@ describe ParSheetsController do
     response.should redirect_to(ParSheet.last)
   end
 
-  it 'should update an existing par sheet' do
-    par_sheet = FactoryGirl.create(:par_sheet, name: 'existing')
-    par_sheet.par_sheet_items[0].par_count = '3'
+  describe 'update' do
 
-    put :update, id: par_sheet.id, par_sheet: FactoryGirl.attributes_for(:par_sheet)
-    
-    assigns(:par_sheet).should_not be_nil
-    response.should redirect_to(par_sheet)
-    par_sheet.reload
-    par_sheet.name.should_not eq('existing')
-    par_sheet.par_sheet_items[0].par_count.should_not eq('3')
+    before(:each) do
+      @par_sheet = FactoryGirl.create(:par_sheet, name: 'existing')
+      @par_sheet.par_sheet_items[0].par_count = '3'
+    end
+
+    it 'should update an existing par sheet' do
+      put :update, id: @par_sheet.id, par_sheet: FactoryGirl.attributes_for(:par_sheet)
+
+      assigns(:par_sheet).should_not be_nil
+      response.should redirect_to(@par_sheet)
+      @par_sheet.reload
+      @par_sheet.name.should_not eq('existing')
+      @par_sheet.par_sheet_items[0].par_count.should_not eq('3')
+    end
+
+    it 'should respond to json' do
+      put :update, id: @par_sheet.id, par_sheet: FactoryGirl.attributes_for(:par_sheet), format: :json
+
+      response.body.should == ParSheet.last.to_json
+    end
+
   end
 
   it 'should destroy an existing par sheet' do

@@ -59,3 +59,10 @@ describe "Par Sheets", ->
 
     it "should close the modal", ->
       expect($('.modal:visible').length).toBe(1)
+  describe "save par sheet", ->
+    beforeEach ->
+      spyOn($, 'ajax')
+      parSheets.saveParSheet()
+
+    it "should persist the data", ->
+      expect($.ajax).toHaveBeenCalled()

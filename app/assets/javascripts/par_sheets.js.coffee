@@ -5,7 +5,8 @@ parSheets = do ->
     $('.create_item').click(parSheets.openCreateItemModal)
     $('.modal .cancel').click(parSheets.closeCreateItemModal)
     $('.modal .close').click(parSheets.closeCreateItemModal)
-    $('.modal .save').click(parSheets.createItem.bind(this))
+    $('.modal .save').click(parSheets.createItem)
+    $('.sheet_item').focusout(parSheets.saveParSheet)
   addItem: ->
     source = $('#sheet_item_template').html()
     template = Handlebars.compile(source)
@@ -22,7 +23,6 @@ parSheets = do ->
   closeCreateItemModal: ->
     $('.modal').modal('hide')
     $('.modal form').get(0).reset()
-      
   createItem: ->
     data = $('.modal form').serialize()
 
@@ -32,7 +32,14 @@ parSheets = do ->
       data: data
       success: parSheets.successfulCreateItemCallback
     )
-
+  saveParSheet: ->
+    data = $('.par_sheet_form').serialize()
+    id = $('#par_sheet_id').val()
+    $.ajax(
+      url: "/par_sheets/#{id}.json"
+      type: 'PUT'
+      data: data
+    )
   successfulCreateItemCallback: (result) ->
     parSheets.closeCreateItemModal()
     parSheets.addSelectOption(result.name, result.id)

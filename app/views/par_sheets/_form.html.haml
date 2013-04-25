@@ -1,5 +1,6 @@
-= form_for @par_sheet, html: { class: 'form-inline' } do |sheet|
+= form_for @par_sheet, html: { class: 'par_sheet_form form-inline' } do |sheet|
   .control-group
+    = sheet.hidden_field :id
     = sheet.label :name, 'Name: '
     = sheet.text_field :name
     = link_to 'Add Item to inventory', '#', class: 'btn btn-link add_item'
