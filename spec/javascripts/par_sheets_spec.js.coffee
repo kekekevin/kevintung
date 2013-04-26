@@ -13,13 +13,16 @@ describe "Par Sheets", ->
       parSheets.addItem()
       expect($('.sheet_item').length).toBe(2)
   describe "remove item", ->
-    it "should remove an item row", ->
+    beforeEach ->
+      spyOn($, 'ajax')
       parSheets.removeItem.apply($('.sheet_item')[0])
+
+    it "should remove an item row", ->
       expect($('.sheet_item:visible').length).toBe(0)
     
     it "should change the destroy attribute to true", ->
-      parSheets.removeItem.apply($('.sheet_item')[0])
       expect($('[id$=_destroy]').val()).toBe('true')
+
   describe "open create item modal", ->
     it "should show the create item modal", ->
       parSheets.openCreateItemModal()
@@ -59,10 +62,3 @@ describe "Par Sheets", ->
 
     it "should close the modal", ->
       expect($('.modal:visible').length).toBe(1)
-  describe "save par sheet", ->
-    beforeEach ->
-      spyOn($, 'ajax')
-      parSheets.saveParSheet()
-
-    it "should persist the data", ->
-      expect($.ajax).toHaveBeenCalled()

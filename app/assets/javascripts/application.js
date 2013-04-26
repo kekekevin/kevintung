@@ -15,4 +15,7 @@
 //= require handlebars.runtime
 //= require handlebars
 //= require bootstrap
+//= require underscore
+//= require json2
+//= require backbone
 //= require_tree .

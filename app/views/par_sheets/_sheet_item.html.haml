@@ -2,6 +2,7 @@
   .span3
     = item.label :par_item_id, 'Item: '
     = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select input-large' }
+    = item.hidden_field :id
 
   .span9
     = item.label :par_count, 'Value: '
