@@ -27,13 +27,25 @@ describe ParItemsController do
     response.should render_template(:show)
   end
 
-  it "should retrieve all items to be shown" do
-    par_item = FactoryGirl.create(:par_item)
-    
-    get :index
+  describe "index" do
 
-    assigns(:par_items).should eq([par_item])
-    response.should render_template(:index)
+    before do
+      @par_item = FactoryGirl.create(:par_item)
+    end
+    
+    it "should retrieve all items to be shown" do
+      get :index
+
+      assigns(:par_items).should eq [@par_item]
+      response.should render_template(:index)
+    end
+
+    it "should respond do json" do
+      get :index, format: :json
+
+      response.body.should == [@par_item].to_json
+    end
+
   end
 
   it "should create a new item" do

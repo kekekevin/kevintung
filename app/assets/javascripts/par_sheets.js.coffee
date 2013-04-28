@@ -1,3 +1,5 @@
+window.KevinTung ||= {}
+
 parSheets = do ->
   init: (options) ->
     $('.add_item').click(parSheets.addItem)
@@ -40,7 +42,7 @@ parSheets = do ->
       $(element).append($('<option>', { value: id }).text(name))
     )
 
-window.parSheets = parSheets
+window.KevinTung.parSheets = parSheets
 
 jQuery ->
   if $('.par_sheets').length

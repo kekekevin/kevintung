@@ -4,6 +4,7 @@
 #= require bootstrap
 
 describe "Par Sheets", ->
+  parSheets = KevinTung.parSheets
   beforeEach ->
     loadFixtures 'par_sheets_fixture'
     parSheets.init()

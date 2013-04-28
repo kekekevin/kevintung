@@ -35,5 +35,10 @@ class ParItemsController < ApplicationController
 
   def index
     @par_items = ParItem.all
+
+    respond_to do |format|
+      format.html { @par_items }
+      format.json { render json: @par_items }
+    end
   end
 end
