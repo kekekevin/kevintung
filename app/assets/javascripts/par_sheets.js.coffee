@@ -45,5 +45,5 @@ parSheets = do ->
 window.KevinTung.parSheets = parSheets
 
 jQuery ->
-  if $('.par_sheets').length
+  if $('body.par_sheets').length
     parSheets.init()

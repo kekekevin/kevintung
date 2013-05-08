@@ -1,9 +1,30 @@
 %h1 Backbone Par Sheets
 
-= link_to 'Create New Item Type', '#', class: 'btn btn-link create_item'
+.par_sheets
+  = link_to 'Create New Item Type', '#', class: 'btn btn-link create_item'
 
-%select
+  %select
 
-%select
+  %select
 
-= render 'par_sheets/create_item_modal'
+  .modal.hide.fade
+    .modal-header
+      %button.close{ type: 'button', "data-dismiss" => 'modal' }
+        &times;
+      %h3
+        Create a new item
+    .modal-body
+      %form#new_par_item
+        .control-group
+          %label.control-label{ for: 'name' }
+            Name
+        .controls
+          %input#name{ type: 'text' }
+        .control-group
+          %label.control-label{ for: 'description' }
+            Description
+        .controls
+          %textarea#description
+    .modal-footer
+      = link_to 'Cancel', '#', class: 'btn cancel'
+      = link_to 'Save', '#', class: 'btn btn-primary save'

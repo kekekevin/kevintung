@@ -1,7 +1,7 @@
 window.KevinTung ||= {}
 
-ParItemSelectView = Backbone.View.extend(
-  el: 'select'
+ParSheetView = Backbone.View.extend(
+  el: '.par_sheets'
   initialize: () ->
     console.log 'par item select view initialized'
     @collection = new KevinTung.ParItems()
@@ -11,6 +11,7 @@ ParItemSelectView = Backbone.View.extend(
     @render()
 
     @listenTo( @collection, 'reset', @render )
+    @listenTo( @collection, 'add', @render )
   render: ->
     @collection.each (item) =>
       @renderItem(item)
@@ -18,7 +19,15 @@ ParItemSelectView = Backbone.View.extend(
     parItemView = new KevinTung.ParItemView(
       model: item
     )
-    @$el.append( parItemView.render().el )
+    $('select', @el).append( parItemView.render().el )
+  events:
+    'click .save': 'addItem'
+  addItem: (e) ->
+    formData = {}
+    $('.modal input').each (index, el) ->
+      formData[el.id] = $(el).val()
+
+    @collection.create(formData)
 )
 
-window.KevinTung.ParItemSelectView = ParItemSelectView
+window.KevinTung.ParSheetView = ParSheetView
