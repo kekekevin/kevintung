@@ -1,0 +1,14 @@
+.span3
+  %input#id{type: 'hidden', value: '{{id}}'}
+
+  %label{for: 'par_item_id'}
+    Item:
+  %select#par_item_id
+
+.span9
+  %label{for: 'par_count'}
+    Value:
+  %input.mini#par_count{type: 'text', value: '{{par_count}}'}
+
+  %a.remove.btn.btn-link
+
