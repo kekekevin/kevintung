@@ -34,12 +34,16 @@ ParSheetView = Backbone.View.extend(
     $('select', @el).append( parItemView.render().el )
   events:
     'click .save': 'addItem'
+    'click .create_item': 'openCreateItemModal'
   addItem: (e) ->
     formData = {}
     $('.modal input').each (index, el) ->
       formData[el.id] = $(el).val()
 
     @item_collection.create(formData)
+    $('.modal').modal('hide')
+  openCreateItemModal: ->
+    $('.modal').modal()
 )
 
 window.KevinTung.ParSheetView = ParSheetView
