@@ -19,13 +19,17 @@ describe ParSheetsController do
     response.should render_template(:show)
   end
   
-  it 'should retrieve an existing par sheet to edit' do
-    par_sheet = FactoryGirl.create(:par_sheet)
+  describe 'edit' do
+    before do
+      @par_sheet = FactoryGirl.create(:par_sheet)
+    end
 
-    get :edit, id: par_sheet.id
+    it 'should retrieve an existing par sheet to edit' do
+      get :edit, id: @par_sheet.id
 
-    assigns(:par_sheet).should eq(par_sheet)
-    response.should render_template(:edit)
+      assigns(:par_sheet).should eq(@par_sheet)
+      response.should render_template(:edit)
+    end
   end
 
   it 'should create a new sheet' do

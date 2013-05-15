@@ -4,9 +4,8 @@ Kevintung::Application.routes.draw do
 
   resources :par_sheets do
     resources :prep_sheets
+    resources :par_sheet_items
   end
-
-  resources :par_sheet_items
 
   match ':action' => 'static#:action', as: :static
 

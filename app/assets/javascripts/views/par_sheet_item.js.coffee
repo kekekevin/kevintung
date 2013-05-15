@@ -1,6 +1,6 @@
 window.KevinTung ||= {}
 
-ParSheetItemView = Backbone.view.extend(
+ParSheetItemView = Backbone.View.extend(
   className: 'sheet_item'
   template: HandlebarsTemplates['par_sheet_item']
   render: ->
