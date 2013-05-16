@@ -4,7 +4,8 @@ ParItemView = Backbone.View.extend(
   tagName: 'option'
   template:  HandlebarsTemplates['par_item']
   render: ->
-    @$el.html( @template(@model.toJSON()) )
+    @$el.val( @model.get('id'))
+    @$el.text( @model.get('name'))
     this
 )
 

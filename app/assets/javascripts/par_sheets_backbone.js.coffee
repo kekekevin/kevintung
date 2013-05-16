@@ -1,3 +1,11 @@
 $ ->
   if $('.par_sheets_backbone').length
-    sheetView = new KevinTung.ParSheetView()
+    sheet = new KevinTung.ParSheet(
+      id: 3
+    )
+    sheet.fetch(
+      success: ->
+        sheetView = new KevinTung.ParSheetView(
+          model: sheet
+        )
+    )

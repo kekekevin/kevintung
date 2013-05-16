@@ -10,13 +10,23 @@ describe ParSheetsController do
     response.should render_template(:index)
   end
 
-  it 'should retrieve an existing par sheet' do
-    par_sheet = FactoryGirl.create(:par_sheet)
+  describe 'show' do
+    before do
+      @par_sheet = FactoryGirl.create(:par_sheet)
+    end
 
-    get :show, id: par_sheet.id
+    it 'should retrieve an existing par sheet' do
+      get :show, id: @par_sheet.id
 
-    assigns(:par_sheet).should eq(par_sheet)
-    response.should render_template(:show)
+      assigns(:par_sheet).should eq(@par_sheet)
+      response.should render_template(:show)
+    end
+
+    it 'should respond to json requests' do
+      get :show, id: @par_sheet.id, format: :json
+
+      response.body.should eq @par_sheet.to_json
+    end
   end
   
   describe 'edit' do

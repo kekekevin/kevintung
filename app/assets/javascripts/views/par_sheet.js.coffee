@@ -5,23 +5,24 @@ ParSheetView = Backbone.View.extend(
   initialize: () ->
     console.log 'par item select view initialized'
     @inventory = new KevinTung.ParSheetItems()
-    @inventory.fetch(
-      reset: true
-    )
+    @inventory.url = "/par_sheets/#{@model.id}/par_sheet_items"
     @item_collection = new KevinTung.ParItems()
-    @item_collection.fetch(
-      reset: true
+    @inventory.fetch(
+      success: =>
+        @item_collection.fetch(
+          reset: true
+        )
     )
-    @render()
 
     @listenTo( @item_collection, 'reset', @render )
-    @listenTo( @item_collection, 'add', @render )
-    @listenTo( @inventory, 'reset', @render )
+    @listenTo( @item_collection, 'add', @renderOption )
   render: ->
     @inventory.each (item) =>
       @renderItem(item)
     @item_collection.each (option) =>
       @renderOption(option)
+    @inventory.each (item) =>
+      @selectItem(item)
   renderItem: (item) ->
     parSheetItemView = new KevinTung.ParSheetItemView(
       model: item
@@ -32,6 +33,8 @@ ParSheetView = Backbone.View.extend(
       model: option
     )
     $('select', @el).append( parItemView.render().el )
+  selectItem: (item) ->
+    $("input[value=#{item.get('id')}] ~ select", @el).val(item.get('par_item_id'))
   events:
     'click .save': 'addItem'
     'click .create_item': 'openCreateItemModal'

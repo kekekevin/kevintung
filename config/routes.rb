@@ -9,10 +9,6 @@ Kevintung::Application.routes.draw do
 
   match ':action' => 'static#:action', as: :static
 
-  match 'api/:controller' => ':controller#create', defaults: { format: :json }, via: :post
-  
-  match 'api/:controller' => ':controller#index', defaults: { format: :json }, via: :get
-
   root :to => 'static#home'
 
   # The priority is based upon order of creation:

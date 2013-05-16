@@ -6,6 +6,11 @@ class ParSheetsController < ApplicationController
 
   def show
     @par_sheet = ParSheet.find_by_id(params[:id])
+
+    respond_to do |format|
+      format.html { @par_sheet }
+      format.json { render json: @par_sheet.to_json }
+    end
   end
 
   def edit
