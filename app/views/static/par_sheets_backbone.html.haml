@@ -1,9 +1,14 @@
 %h1 Backbone Par Sheets
 
 .par_sheet
-  = link_to 'Create New Item Type', '#', class: 'btn btn-link create_item'
 
-  .sheet_items
+  .sheet_items.form-inline
+    %legend
+      Inventory
+      %a.btn.add_item
+        Add Item
+      %a.btn.btn-link.create_item
+        Create New Item Type
 
   .modal.hide.fade
     .modal-header

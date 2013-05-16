@@ -3,12 +3,13 @@
 
   %label{for: 'par_item_id'}
     Item:
-  %select#par_item_id
+  %select#par_item_id.item-select.input-large
 
 .span9
   %label{for: 'par_count'}
     Value:
-  %input.mini#par_count{type: 'text', value: '{{par_count}}'}
+  %input.input-mini#par_count{type: 'text', value: '{{par_count}}'}
 
   %a.remove.btn.btn-link
+    Remove
 
