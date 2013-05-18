@@ -1,15 +1,7 @@
 %h1 Backbone Par Sheets
 
 .par_sheet
-
-  .sheet_items.form-inline
-    %legend
-      Inventory
-      %a.btn.add_item
-        Add Item
-      %a.btn.btn-link.create_item
-        Create New Item Type
-
+  
   .modal.hide.fade
     .modal-header
       %button.close{ type: 'button', "data-dismiss" => 'modal' }
@@ -29,5 +21,7 @@
         .controls
           %textarea#description
     .modal-footer
-      = link_to 'Cancel', '#', class: 'btn cancel'
-      = link_to 'Save', '#', class: 'btn btn-primary save'
+      %a.btn.cancel
+        Cancel
+      %a.btn.btn-primary.save
+        Save

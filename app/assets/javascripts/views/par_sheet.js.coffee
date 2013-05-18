@@ -16,7 +16,9 @@ ParSheetView = Backbone.View.extend(
 
     @listenTo( @item_collection, 'reset', @render )
     @listenTo( @item_collection, 'add', @renderOption )
+  template: HandlebarsTemplates['par_sheet']
   render: ->
+    @$el.prepend( @template( @model.toJSON()) )
     @inventory.each (item) =>
       @renderItem(item)
     @item_collection.each (option) =>

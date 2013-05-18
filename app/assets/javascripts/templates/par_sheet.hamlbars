@@ -1,0 +1,14 @@
+%form.form-inline
+  .control-group
+    %input#id{type: 'hidden', value: '{{id}}'}
+    %label{for: 'name'}
+      Par Sheet:
+    %input#name{type: 'text', value: '{{name}}'}
+.sheet_items.form-inline
+  %legend
+    Inventory
+    %a.btn.add_item
+      Add Item
+    %a.btn.btn-link.create_item
+      Create New Item Type
+
