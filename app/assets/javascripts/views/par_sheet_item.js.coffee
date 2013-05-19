@@ -8,6 +8,11 @@ ParSheetItemView = Backbone.View.extend(
   render: ->
     @$el.html( @template(@model.toJSON()) )
     this
+  events:
+    'click .remove': 'removeItem'
+  removeItem: ->
+    @model.destroy()
+    @remove()
 )
 
 window.KevinTung.ParSheetItemView = ParSheetItemView
