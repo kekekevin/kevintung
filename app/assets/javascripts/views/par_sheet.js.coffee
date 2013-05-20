@@ -15,14 +15,13 @@ ParSheetView = Backbone.View.extend(
     )
 
     @listenTo( @item_collection, 'reset', @render )
-    @listenTo( @item_collection, 'add', @renderOption )
+    @listenTo( @item_collection, 'add', @renderNewOption )
+    @listenTo( @inventory, 'add', @renderItem )
   template: HandlebarsTemplates['par_sheet']
   render: ->
     @$el.prepend( @template( @model.toJSON()) )
     @inventory.each (item) =>
       @renderItem(item)
-    @item_collection.each (option) =>
-      @renderOption(option)
     @inventory.each (item) =>
       @selectItem(item)
   renderItem: (item) ->
@@ -30,17 +29,24 @@ ParSheetView = Backbone.View.extend(
       model: item
     )
     $('.sheet_items', @el).append( parSheetItemView.render().el )
-  renderOption: (option) ->
+    @item_collection.each (option) =>
+      @renderOption(option, parSheetItemView.el)
+
+  renderNewOption: (option) ->
+    $('.sheet_item', @el).each (sheetItem) =>
+      @renderOption(option, sheetItem)
+  renderOption: (option, sheetItem) ->
     parItemView = new KevinTung.ParItemView(
       model: option
     )
-    $('select', @el).append( parItemView.render().el )
+    $('select', sheetItem).append( parItemView.render().el )
   selectItem: (item) ->
     $("input[value=#{item.get('id')}] ~ select", @el).val(item.get('par_item_id'))
   events:
-    'click .save': 'addItem'
+    'click .save': 'createItem'
     'click .create_item': 'openCreateItemModal'
-  addItem: (e) ->
+    'click .add_item': 'addItem'
+  createItem: (e) ->
     formData = {}
     $('.modal input').each (index, el) ->
       formData[el.id] = $(el).val()
@@ -49,6 +55,11 @@ ParSheetView = Backbone.View.extend(
     $('.modal').modal('hide')
   openCreateItemModal: ->
     $('.modal').modal()
+  addItem: ->
+    item = new KevinTung.ParSheetItem(
+      par_sheet_id: @model.id
+    )
+    @inventory.create(item)
 )
 
 window.KevinTung.ParSheetView = ParSheetView

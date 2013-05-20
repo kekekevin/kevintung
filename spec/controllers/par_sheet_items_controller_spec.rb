@@ -15,6 +15,25 @@ describe ParSheetItemsController do
     end
   end
 
+  describe 'create' do
+    before do
+      @par_sheet = FactoryGirl.create(:par_sheet)
+    end
+
+    it 'should create the item' do
+      expect {
+        post :create, par_sheet_id: @par_sheet.id, par_sheet_item: FactoryGirl.attributes_for(:par_sheet_item), format: :json
+      }.to change(ParSheetItem, :count).by(1)
+    end
+
+    it 'should return the json object' do
+      post :create, par_sheet_id: @par_sheet.id, par_sheet_item: FactoryGirl.attributes_for(:par_sheet_item), format: :json
+
+      response.body.should eq ParSheetItem.last.to_json
+      ParSheetItem.last.par_sheet_id.should eq @par_sheet.id
+    end
+  end
+
   describe 'update' do
     before do
       @par_sheet = FactoryGirl.create(:par_sheet)
