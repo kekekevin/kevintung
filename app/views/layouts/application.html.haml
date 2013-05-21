@@ -1,16 +1,25 @@
 !!!
 %html
   %head
-    %title Kevin Tung
+    %title kevintung
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body{class: "#{controller_name} #{action_name}"}
-    .container-fluid
-      .row-fluid
-        .span3 About Me
-        .span3 Projects
-        .span3 Connect
-      .row-fluid
-        .span12
-          = yield
+    .container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          - {home: 'Home', projects: 'Projects', connect: 'Connect'}.each do |action, tab|
+            %li{class: (action.to_s == action_name) ? 'active' : '' }
+              %a
+                = tab
+        %h3.muted
+          kevintung
+      %hr
+      .container-fluid
+        = yield
+
+      %hr
+      .footer
+        %p.muted
+          Copyright kevintung 2013. As if anyone reads this portion.

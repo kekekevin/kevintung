@@ -1,4 +1,11 @@
 @import "bootstrap";
+
+/* Should find a better place for this... */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
