@@ -11,8 +11,7 @@
         %ul.nav.nav-pills.pull-right
           - {home: 'Home', projects: 'Projects', connect: 'Connect'}.each do |action, tab|
             %li{class: (action.to_s == action_name) ? 'active' : '' }
-              %a
-                = tab
+              = link_to tab, static_path(action) 
         %h3.muted
           kevintung
       %hr
