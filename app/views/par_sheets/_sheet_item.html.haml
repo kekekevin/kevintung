@@ -1,10 +1,10 @@
 .sheet_item.control-group.row-fluid
-  .span3
+  .span6
     = item.label :par_item_id, 'Item: '
     = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select input-large' }
     = item.hidden_field :id
 
-  .span9
+  .span6
     = item.label :par_count, 'Value: '
     = item.text_field :par_count, class: 'input-mini'
     = link_to 'Remove', '#', class: 'remove btn btn-link'
