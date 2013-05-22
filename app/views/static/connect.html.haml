@@ -1,0 +1,36 @@
+.row-fluid
+  .span12
+
+    %a{href: 'http://www.twitter.com/kekekevin'}
+      =image_tag 'twitter-bird.png', class: 'pull-left', size: '60x60'
+
+      %h3
+        @kekekevin
+%hr
+
+.row-fluid
+  .span12
+
+    %a{href: 'http://github.com/kekekevin'}
+      =image_tag 'octocat.png', class: 'pull-left', size: '60x60'
+
+      %h3
+        kekekevin
+%hr
+
+.row-fluid
+  .span12
+
+    .g-plus{'data-height' => '69', 'data-href' => '//plus.google.com/108672948426946035762', 'data-rel' => 'author'}
+    :javascript
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+%hr
+
+.row-fluid
+  .span12
+    %a{ href: 'http://www.linkedin.com/in/kevintung'}
+      =image_tag 'http://www.linkedin.com/img/webpromo/btn_myprofile_160x33.png', size: '160x33'
