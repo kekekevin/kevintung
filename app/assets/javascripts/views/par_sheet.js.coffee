@@ -1,7 +1,9 @@
 window.KevinTung ||= {}
 
 ParSheetView = Backbone.View.extend(
+
   el: '.par_sheet'
+
   initialize: () ->
     console.log 'par item select view initialized'
     @inventory = new KevinTung.ParSheetItems()
@@ -17,13 +19,22 @@ ParSheetView = Backbone.View.extend(
     @listenTo( @item_collection, 'reset', @render )
     @listenTo( @item_collection, 'add', @renderNewOption )
     @listenTo( @inventory, 'add', @renderItem )
+
   template: HandlebarsTemplates['par_sheet']
+
+  events:
+    'click .save': 'createItem'
+    'click .create_item': 'openCreateItemModal'
+    'click .add_item': 'addItem'
+    'focusout #name': 'saveSheet'
+    
   render: ->
     @$el.prepend( @template( @model.toJSON()) )
     @inventory.each (item) =>
       @renderItem(item)
     @inventory.each (item) =>
       @selectItem(item)
+
   renderItem: (item) ->
     parSheetItemView = new KevinTung.ParSheetItemView(
       model: item
@@ -35,17 +46,16 @@ ParSheetView = Backbone.View.extend(
   renderNewOption: (option) ->
     $('.sheet_item', @el).each (sheetItem) =>
       @renderOption(option, sheetItem)
+      
   renderOption: (option, sheetItem) ->
     parItemView = new KevinTung.ParItemView(
       model: option
     )
     $('select', sheetItem).append( parItemView.render().el )
+
   selectItem: (item) ->
     $("input[value=#{item.get('id')}] ~ select", @el).val(item.get('par_item_id'))
-  events:
-    'click .save': 'createItem'
-    'click .create_item': 'openCreateItemModal'
-    'click .add_item': 'addItem'
+
   createItem: (e) ->
     formData = {}
     $('.modal input').each (index, el) ->
@@ -53,13 +63,20 @@ ParSheetView = Backbone.View.extend(
 
     @item_collection.create(formData)
     $('.modal').modal('hide')
+
   openCreateItemModal: ->
     $('.modal').modal()
+
   addItem: ->
     item = new KevinTung.ParSheetItem(
       par_sheet_id: @model.id
     )
     @inventory.create(item)
+
+  saveSheet: ->
+    @model.set('name', $('#name', @el).val())
+    @model.save()
+
 )
 
 window.KevinTung.ParSheetView = ParSheetView
