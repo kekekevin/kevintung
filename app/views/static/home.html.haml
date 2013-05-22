@@ -23,8 +23,7 @@
       Every once in a while I'll come across some technologies that I find interesting, and I'll combine it with an app idea that I have in the back of my head.
 
     %p
-      %a.btn.btn-primary
-        Poke Around
+      =link_to 'Poke Around', static_path(:projects), class: 'btn btn-primary'
 %hr
 
 .row-fluid
@@ -39,5 +38,4 @@
       Join me on social media to see what I'm up to! Also, take a look around my github and give me some feedback.
 
     %p
-      %a.btn.btn-primary
-        Beam Me Up
+      =link_to 'Beam Me Up', static_path(:connect), class: 'btn btn-primary'
