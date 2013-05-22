@@ -1,4 +1,9 @@
 class ParItemsController < ApplicationController
+
+  def set_active_tab
+    @active_tab = :projects
+  end
+
   def new
     @par_item = ParItem.new
   end

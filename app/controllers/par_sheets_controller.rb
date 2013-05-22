@@ -1,4 +1,8 @@
 class ParSheetsController < ApplicationController
+
+  def set_active_tab
+    @active_tab = :projects
+  end
   
   def index 
     @par_sheets = ParSheet.all

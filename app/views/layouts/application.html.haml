@@ -9,9 +9,9 @@
     .container-narrow
       .masthead
         %ul.nav.nav-pills.pull-right
-          - {home: 'Home', projects: 'Projects', connect: 'Connect'}.each do |action, tab|
-            %li{class: (action.to_s == action_name) ? 'active' : '' }
-              = link_to tab, static_path(action) 
+          - {home: 'Home', projects: 'Projects', connect: 'Connect'}.each do |tab, tab_display|
+            %li{class: (tab.to_s == @active_tab.to_s) ? 'active' : '' }
+              = link_to tab_display, static_path(tab) 
         %h3.muted
           kevintung
       %hr

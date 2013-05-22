@@ -1,4 +1,8 @@
 class PrepSheetsController < ApplicationController
+
+  def set_active_tab
+    @active_tab = :projects
+  end
   
   def index
     @par_sheet = ParSheet.find(params[:par_sheet_id])
