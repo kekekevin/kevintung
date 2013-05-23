@@ -11,3 +11,27 @@
       Add Item
     %a.btn.btn-link.create_item
       Create New Item Type
+
+.modal.hide.fade
+  .modal-header
+    %button.close{ :type => "button", "data-dismiss" => "modal" }
+      &times;
+    %h3
+      Create a new item
+  .modal-body
+    %form#new_par_item
+      .control-group
+        %label.control-label{ :for => "name" }
+          Name
+      .controls
+        %input#name{ :type => "text" }
+      .control-group
+        %label.control-label{ :for => "description" }
+          Description
+      .controls
+        %textarea#description
+  .modal-footer
+    %a.btn.cancel
+      Cancel
+    %a.btn.btn-primary.save
+      Save

@@ -26,9 +26,11 @@ ParSheetView = Backbone.View.extend(
     "click .save": "createItem"
     "click .create_item": "openCreateItemModal"
     "click .add_item": "addItem"
+    "click .cancel": "closeCreateItemModal"
     "focusout #name": "saveSheet"
     
   render: ->
+    @$el.empty()
     @$el.prepend( @template( @model.toJSON()) )
     @inventory.each (item) =>
       @renderItem(item)
@@ -66,6 +68,9 @@ ParSheetView = Backbone.View.extend(
 
   openCreateItemModal: ->
     $(".modal").modal()
+
+  closeCreateItemModal: ->
+    $(".modal").modal("hide")
 
   addItem: ->
     item = new KevinTung.ParSheetItem(
