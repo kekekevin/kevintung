@@ -1,6 +1,6 @@
-= simple_form_for @par_item, html: { class: 'form-horizontal' } do |item|
-  = render 'form_body', item: item
+= simple_form_for @par_item, html: { class: "form-horizontal" } do |item|
+  = render "form_body", item: item
   .form-actions
-    = item.submit 'Save', class: 'btn-primary'
-    = link_to 'Back to all items', par_items_url, class: 'btn btn-link'
+    = item.submit "Save", class: "btn-primary"
+    = link_to "Back to all items", par_items_url, class: "btn btn-link"
 

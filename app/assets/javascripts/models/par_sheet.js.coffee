@@ -2,10 +2,10 @@ window.KevinTung ||= {}
 
 ParSheet = Backbone.Model.extend(
   defaults:
-    name: ''
+    name: ""
   initialize: ->
-    console.log 'par sheet initialized'
-  urlRoot: '/par_sheets'
+    console.log "par sheet initialized"
+  urlRoot: "/par_sheets"
 )
 
 window.KevinTung.ParSheet = ParSheet

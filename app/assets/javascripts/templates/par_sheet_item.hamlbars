@@ -1,14 +1,14 @@
 .span6
-  %input#id{type: 'hidden', value: '{{id}}'}
+  %input#id{type: "hidden", value: "{{id}}"}
 
-  %label{for: 'par_item_id'}
+  %label{for: "par_item_id"}
     Item:
   %select#par_item_id.item-select.input-large
 
 .span6
-  %label{for: 'par_count'}
+  %label{for: "par_count"}
     Value:
-  %input.input-mini#par_count{type: 'text', value: '{{par_count}}'}
+  %input.input-mini#par_count{type: "text", value: "{{par_count}}"}
 
   %a.remove.btn.btn-link
     Remove

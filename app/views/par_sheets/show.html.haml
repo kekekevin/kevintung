@@ -1,6 +1,6 @@
 %h1 
   Sheet:
-  =@par_sheet.name
+  = @par_sheet.name
 %legend Inventory
 %table.table.table-hover
   %thead
@@ -10,12 +10,12 @@
       %th
         Par Value
   %tbody
-    -@par_sheet.par_sheet_items.each do |i|
+    - @par_sheet.par_sheet_items.each do |i|
       %tr
         %td
-          =i.par_item.name
+          = i.par_item.name
         %td
-          =i.par_count
+          = i.par_count
 
-= link_to 'Edit', edit_par_sheet_path(@par_sheet), class: 'btn'
-= link_to 'Back to all par sheets', par_sheets_url, class: 'btn btn-link'
+= link_to "Edit", edit_par_sheet_path(@par_sheet), :class => "btn"
+= link_to "Back to all par sheets", par_sheets_url, :class => "btn btn-link"

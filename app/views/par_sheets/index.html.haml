@@ -1,5 +1,8 @@
 %h1 Par Sheets 
 
+%p
+  A par sheet is a tool used in restaurants/kitchens 
+
 %table.table.table-hover
   %thead
     %tr
@@ -13,9 +16,9 @@
           %a
             = link_to sheet.name, edit_par_sheet_path(sheet)
         %td
-          = link_to 'Generate prep sheet', new_par_sheet_prep_sheet_path(sheet), class: 'btn btn-primary'
-          = link_to 'View old prep sheets', par_sheet_prep_sheets_url(sheet.id), class: 'btn'
-          = link_to 'Delete', par_sheet_path(sheet), method: :delete, class: 'btn btn-danger'
+          = link_to "Generate prep sheet", new_par_sheet_prep_sheet_path(sheet), :class => "btn btn-primary"
+          = link_to "View old prep sheets", par_sheet_prep_sheets_url(sheet.id), :class => "btn"
+          = link_to "Delete", par_sheet_path(sheet), :method => :delete, :class => "btn btn-danger"
 
 .form-actions
-  = link_to 'Create a new par sheet', new_par_sheet_path, class: 'btn'
+  = link_to "Create a new par sheet", new_par_sheet_path, :class => "btn"

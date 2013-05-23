@@ -1,64 +1,72 @@
-require 'spec_helper'
-
+require "spec_helper"
 
 describe ParSheetItemsController do
-  describe 'index' do
+
+  describe "index" do
+
     before do
       @par_sheet = FactoryGirl.create(:par_sheet)
       @par_sheet_item = @par_sheet.par_sheet_items[0]
     end
 
-    it 'should return all par sheet items' do
-      get :index, par_sheet_id: @par_sheet.id, format: :json
+    it "should return all par sheet items" do
+      get :index, :par_sheet_id => @par_sheet.id, :format => :json
 
       response.body.should == [@par_sheet_item].to_json
     end
+
   end
 
-  describe 'create' do
+  describe "create" do
+
     before do
       @par_sheet = FactoryGirl.create(:par_sheet)
     end
 
-    it 'should create the item' do
+    it "should create the item" do
       expect {
-        post :create, par_sheet_id: @par_sheet.id, par_sheet_item: FactoryGirl.attributes_for(:par_sheet_item), format: :json
+        post :create, :par_sheet_id => @par_sheet.id, :par_sheet_item => FactoryGirl.attributes_for(:par_sheet_item), :format => :json
       }.to change(ParSheetItem, :count).by(1)
     end
 
-    it 'should return the json object' do
-      post :create, par_sheet_id: @par_sheet.id, par_sheet_item: FactoryGirl.attributes_for(:par_sheet_item), format: :json
+    it "should return the json object" do
+      post :create, :par_sheet_id => @par_sheet.id, :par_sheet_item => FactoryGirl.attributes_for(:par_sheet_item), :format => :json
 
-      response.body.should eq ParSheetItem.last.to_json
-      ParSheetItem.last.par_sheet_id.should eq @par_sheet.id
+      response.body.should == ParSheetItem.last.to_json
+      ParSheetItem.last.par_sheet_id.should == @par_sheet.id
     end
+
   end
 
-  describe 'update' do
+  describe "update" do
+
     before do
       @par_sheet = FactoryGirl.create(:par_sheet)
       @par_sheet_item = @par_sheet.par_sheet_items[0]
 
-      put :update, id: @par_sheet_item.id, par_sheet_id: @par_sheet.id, par_sheet_item: FactoryGirl.attributes_for(:par_sheet_item, par_count: 111)
+      put :update, :id => @par_sheet_item.id, :par_sheet_id => @par_sheet.id, :par_sheet_item => FactoryGirl.attributes_for(:par_sheet_item, :par_count => 111)
       @par_sheet_item.reload
     end
 
-    it 'should render json of the updated item' do
+    it "should render json of the updated item" do
       response.body.should == @par_sheet_item.to_json
     end
+
   end
 
-  describe 'destroy' do
+  describe "destroy" do
+
     before do
       @par_sheet = FactoryGirl.create(:par_sheet)
       @par_sheet_item = @par_sheet.par_sheet_items[0]
     end
 
-    it 'should destroy the par sheet item' do
+    it "should destroy the par sheet item" do
       expect{
-        delete :destroy, id: @par_sheet_item.id, par_sheet_id: @par_sheet.id
+        delete :destroy, :id => @par_sheet_item.id, :par_sheet_id => @par_sheet.id
       }.to change(ParSheetItem, :count).by -1
     end
+
   end
 
 end

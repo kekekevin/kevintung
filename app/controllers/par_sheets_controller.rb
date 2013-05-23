@@ -13,7 +13,7 @@ class ParSheetsController < ApplicationController
 
     respond_to do |format|
       format.html { @par_sheet }
-      format.json { render json: @par_sheet.to_json }
+      format.json { render :json => @par_sheet.to_json }
     end
   end
 

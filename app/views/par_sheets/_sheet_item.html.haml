@@ -1,11 +1,11 @@
 .sheet_item.control-group.row-fluid
   .span6
-    = item.label :par_item_id, 'Item: '
-    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { class: 'item-select input-large' }
+    = item.label :par_item_id, "Item: "
+    = item.select :par_item_id, ParItem.all.map { |i| [i.name, i.id] }, {}, { :class => "item-select input-large" }
     = item.hidden_field :id
 
   .span6
-    = item.label :par_count, 'Value: '
-    = item.text_field :par_count, class: 'input-mini'
-    = link_to 'Remove', '#', class: 'remove btn btn-link'
-    = item.hidden_field :_destroy, as: :hidden
+    = item.label :par_count, "Value: "
+    = item.text_field :par_count, :class => "input-mini"
+    = link_to "Remove", "#", :class => "remove btn btn-link"
+    = item.hidden_field :_destroy, :as => :hidden

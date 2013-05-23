@@ -2,17 +2,17 @@
 
 %h2
   Sheet: 
-  =@prep_sheet.par_sheet.name
+  = @prep_sheet.par_sheet.name
 
 %legend I have...
 
-= form_for [@par_sheet, @prep_sheet], html: { class: 'form-inline' } do |sheet|
+= form_for [@par_sheet, @prep_sheet], :html => { :class => "form-inline" } do |sheet|
   = sheet.hidden_field :par_sheet_id
   = sheet.fields_for :prep_sheet_items do |item|
     .control-group.row-fluid
       .span12
         on hand 
-        = item.text_field :count, class: 'input-mini'
+        = item.text_field :count, :class => "input-mini"
         unit(s) of 
         = item.object.par_item.name
         and I need 
@@ -22,6 +22,6 @@
         unit(s)
 
   .form-actions
-    = sheet.submit 'Create', class: 'btn btn-primary'
-    = link_to 'Cancel', par_sheets_url, class: 'btn btn-link'
+    = sheet.submit "Create", :class => "btn btn-primary"
+    = link_to "Cancel", par_sheets_url, :class => "btn btn-link"
 

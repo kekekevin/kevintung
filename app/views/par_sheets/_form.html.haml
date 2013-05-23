@@ -1,23 +1,23 @@
-= form_for @par_sheet, html: { class: 'par_sheet_form form-inline' } do |sheet|
+= form_for @par_sheet, html: { class: "par_sheet_form form-inline" } do |sheet|
   .control-group
     = sheet.hidden_field :id
-    = sheet.label :name, 'Par Sheet: '
+    = sheet.label :name, "Par Sheet: "
     = sheet.text_field :name
   #sheet_items
     %legend 
       Inventory
-      = link_to '#', class: 'btn add_item' do
+      = link_to "#", :class => "btn add_item" do
         Add Item
-      = link_to 'Create New Item Type', '#', class: 'btn btn-link create_item'
+      = link_to "Create New Item Type", "#", :class => "btn btn-link create_item"
     = sheet.fields_for :par_sheet_items do |item|
-      = render 'sheet_item', item: item 
+      = render "sheet_item", :item => item 
   .form-actions 
-    = sheet.submit 'Save', class: 'btn btn-primary'
-    = link_to 'Cancel', par_sheets_url, class: 'btn btn-danger'
+    = sheet.submit "Save", :class => "btn btn-primary"
+    = link_to "Cancel", par_sheets_url, :class => "btn btn-danger"
  
-    %script#sheet_item_template{ type: 'text/x-handlebars-template' }
+    %script#sheet_item_template{ :type => "text/x-handlebars-template" }
       - par_sheet_item = ParSheetItem.new
-      = sheet.fields_for :par_sheet_items, par_sheet_item, child_index: '{{index}}' do |item|
-        = render 'sheet_item', item: item
+      = sheet.fields_for :par_sheet_items, par_sheet_item, :child_index => "{{index}}" do |item|
+        = render "sheet_item", :item => item
 
-= render 'create_item_modal'
+= render "create_item_modal"

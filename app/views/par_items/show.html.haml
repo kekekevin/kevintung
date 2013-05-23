@@ -1,9 +1,9 @@
 %h1
-  =@par_item.name
+  = @par_item.name
 
 %p
   Description:
-  =@par_item.description
+  = @par_item.description
 
-= link_to 'Edit', edit_par_item_path(@par_item), class: 'btn'
-= link_to 'Back to all items', par_items_url, class: 'btn btn-link'
+= link_to "Edit", edit_par_item_path(@par_item), :class => "btn"
+= link_to "Back to all items", par_items_url, :class => "btn btn-link"

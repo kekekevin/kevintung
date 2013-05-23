@@ -1,5 +1,5 @@
 $ ->
-  if $('.par_sheets_backbone').length
+  if $(".par_sheets_backbone").length
     sheet = new KevinTung.ParSheet(
       id: 3
     )

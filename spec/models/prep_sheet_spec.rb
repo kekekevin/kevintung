@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe PrepSheet do
 
@@ -11,18 +11,19 @@ describe PrepSheet do
   end
 
   describe "new from par sheet" do
+
     before(:each) do
       @par_sheet = FactoryGirl.create(:par_sheet)
       @prep_sheet = PrepSheet.new_from_par_sheet(@par_sheet)
     end
 
     it "should create a prep sheet item for each par sheet item" do
-      @prep_sheet.prep_sheet_items.length.should eq(@par_sheet.par_sheet_items.length)
-      @prep_sheet.prep_sheet_items[0].par_count.should eq(@par_sheet.par_sheet_items[0].par_count)
+      @prep_sheet.prep_sheet_items.length.should == @par_sheet.par_sheet_items.length
+      @prep_sheet.prep_sheet_items[0].par_count.should == @par_sheet.par_sheet_items[0].par_count
     end
 
     it "should reference the same par sheet item" do
-      @prep_sheet.par_sheet.id.should eq(@par_sheet.id)
+      @prep_sheet.par_sheet.id.should == @par_sheet.id
     end
 
   end
@@ -31,11 +32,11 @@ describe PrepSheet do
 
     it "should calculate the prep_count for each item" do
       prep_sheet_attributes = FactoryGirl.attributes_for(:prep_sheet)
-      prep_sheet_attributes[:prep_sheet_items_attributes] = { "1" => FactoryGirl.attributes_for(:prep_sheet_item, prep_count: nil) }
+      prep_sheet_attributes[:prep_sheet_items_attributes] = { "1" => FactoryGirl.attributes_for(:prep_sheet_item, :prep_count => nil) }
 
       prep_sheet = PrepSheet.make_calculated_prep_sheet( prep_sheet_attributes )
 
-      prep_sheet.prep_sheet_items[0].prep_count.should eq( BigDecimal.new("1"))
+      prep_sheet.prep_sheet_items[0].prep_count.should == BigDecimal.new("1")
     end
 
   end
