@@ -1,8 +1,3 @@
-#= require jquery
-#= require par_sheets
-#= require handlebars
-#= require bootstrap
-
 describe "Par Sheets", ->
   parSheets = KevinTung.parSheets
   beforeEach ->
