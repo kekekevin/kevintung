@@ -1,7 +1,6 @@
 describe "Par Item View", ->
 
   beforeEach ->
-    loadFixtures "par_item_fixture"
     @parItemView = new KevinTung.ParItemView(
       model: new KevinTung.ParItem(
         id: 1
