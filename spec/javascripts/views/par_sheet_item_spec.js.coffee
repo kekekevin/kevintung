@@ -43,6 +43,18 @@ describe "ParSheetItem View", ->
       expect($('.sheet')).toBeEmpty()
 
   describe "saveItem", ->
+    
+    beforeEach ->
+      spyOn($, "ajax")
+      @parSheetItemView.render()
+      $("#par_count", @parSheetItemView.el).val("3")
+      $("#par_item_id", @parSheetItemView.el).append("<option value=3 selected=selected></option>")
+
+      @parSheetItemView.saveItem()
+
     it "should sync to the server", ->
+      expect($.ajax).toHaveBeenCalled()
 
     it "should update the model with new attributes", ->
+      expect(@parSheetItemView.model.get("par_count")).toBe("3")
+      expect(@parSheetItemView.model.get("par_item_id")).toBe("3")
