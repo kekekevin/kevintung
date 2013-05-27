@@ -1,7 +1,7 @@
 describe "ParSheetItem View", ->
 
   beforeEach ->
-    loadFixtures "par_sheet_item_view_fixture"
+    loadFixtures "par_sheet_item_view"
     @parSheetItem = new KevinTung.ParSheetItem(
       id: 1
       par_count: 2

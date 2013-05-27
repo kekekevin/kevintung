@@ -1,7 +1,7 @@
 describe "Par Sheets", ->
   parSheets = KevinTung.parSheets
   beforeEach ->
-    loadFixtures "par_sheets_fixture"
+    loadFixtures "par_sheets"
     parSheets.init()
 
   describe "add item", ->

@@ -36,6 +36,7 @@ ParSheetView = Backbone.View.extend(
       @renderItem(item)
     @inventory.each (item) =>
       @selectItem(item)
+    this
 
   renderItem: (item) ->
     parSheetItemView = new KevinTung.ParSheetItemView(
