@@ -22,3 +22,6 @@
           = sheet.created_at.strftime "%l:%M:%S %p %m/%d/%Y %Z"
         %td
           = link_to "Delete", par_sheet_prep_sheet_path(@par_sheet.id, sheet.id), :method => "delete", :class => "btn btn-danger"
+
+.form-actions
+  = link_to "Back to all par sheets", par_sheets_url, :class => "btn btn-link"
