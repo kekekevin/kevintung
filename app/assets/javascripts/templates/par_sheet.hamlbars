@@ -35,3 +35,9 @@
       Cancel
     %a.btn.btn-primary.save
       Save
+
+.form-actions
+  %a.btn.btn-primary{ :href => "/par_sheets/{{id}}/prep_sheets/new" }
+    Prep
+  %a.btn.btn-link{ :href => "/par_sheets" }
+    Back to all par sheets

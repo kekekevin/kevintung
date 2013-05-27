@@ -17,5 +17,6 @@
         %td
           = i.par_count
 
+= link_to "Prep", new_par_sheet_prep_sheet_path(@par_sheet), :class => "btn btn-primary"
 = link_to "Edit", edit_par_sheet_path(@par_sheet), :class => "btn"
 = link_to "Back to all par sheets", par_sheets_url, :class => "btn btn-link"

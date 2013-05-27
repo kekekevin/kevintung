@@ -1,7 +1,13 @@
 %h1 Par Sheets 
 
 %p
-  A par sheet is a tool used in restaurants/kitchens 
+  A par sheet is a tool used in restaurants/kitchens to determine the preparation need for specific ingredients/supplies for a day.
+  Each sheet has a list of items that it tracks.  Each item invidually has it's par value which is determined to be the proper
+  amount needed for that day. During prep, a person then fills in the current amount for each of the items such that the prep 
+  amount can be determined.  The determined prep amount, in turn, is the amount of the item that needs to be bought/prepped.
+
+%p
+  Below two version are available.  Only portions are currently fully implemented in Backbone.
 
 %table.table.table-hover
   %thead
@@ -17,12 +23,12 @@
           = sheet.name
         %td 
           %a
-            = link_to 'regular', edit_par_sheet_path(sheet)
+            = link_to 'Original', edit_par_sheet_path(sheet)
             \/
-            = link_to 'backbone', "#{ static_path(:par_sheets_backbone) }#edit/#{sheet.id}"
+            = link_to 'Backbone', "#{ static_path(:par_sheets_backbone) }#edit/#{sheet.id}"
         %td
-          = link_to "Make prep sheet", new_par_sheet_prep_sheet_path(sheet), :class => "btn btn-primary"
-          = link_to "View past prep sheets", par_sheet_prep_sheets_url(sheet.id), :class => "btn"
+          = link_to "Prep", new_par_sheet_prep_sheet_path(sheet), :class => "btn btn-primary"
+          = link_to "View History", par_sheet_prep_sheets_url(sheet.id), :class => "btn"
           = link_to "Delete", par_sheet_path(sheet), :method => :delete, :class => "btn btn-danger"
 
 .form-actions
