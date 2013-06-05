@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425173457) do
+ActiveRecord::Schema.define(:version => 20130605012305) do
 
   create_table "par_items", :force => true do |t|
     t.text     "description"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(:version => 20130425173457) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "performers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "performers_slots", :force => true do |t|
+    t.integer "slot_id"
+    t.integer "performer_id"
+  end
+
+  add_index "performers_slots", ["performer_id"], :name => "index_performers_slots_on_performer_id"
+  add_index "performers_slots", ["slot_id"], :name => "index_performers_slots_on_slot_id"
+
   create_table "prep_sheet_items", :force => true do |t|
     t.integer  "prep_sheet_id"
     t.integer  "count"
@@ -57,5 +71,13 @@ ActiveRecord::Schema.define(:version => 20130425173457) do
   end
 
   add_index "prep_sheets", ["par_sheet_id"], :name => "index_prep_sheets_on_par_sheet_id"
+
+  create_table "slots", :force => true do |t|
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
