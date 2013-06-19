@@ -10,7 +10,7 @@ class PrepSheetsController < ApplicationController
   end
 
   def create
-    @prep_sheet = PrepSheet.make_calculated_prep_sheet(params[:prep_sheet])
+    @prep_sheet = PrepSheet.make_calculated_prep_sheet(prep_sheet_params)
     @prep_sheet.save
     
     redirect_to par_sheet_prep_sheet_path(@prep_sheet.par_sheet.id, @prep_sheet.id)
@@ -31,6 +31,12 @@ class PrepSheetsController < ApplicationController
 
   def show
     @prep_sheet = PrepSheet.find(params[:id])
+  end
+
+  private
+
+  def prep_sheet_params
+    params.required(:prep_sheet).permit(:par_sheet_id, :prep_sheet_item_attributes)
   end
 
 end

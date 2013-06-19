@@ -1,7 +1,5 @@
 class PrepSheet < ActiveRecord::Base
 
-  attr_accessible :par_sheet_id, :prep_sheet_items_attributes
-
   belongs_to :par_sheet
 
   has_many :prep_sheet_items

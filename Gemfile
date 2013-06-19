@@ -38,7 +38,6 @@ gem 'newrelic_rpm'
 
 # rails gems to help rails 4 transition
 
-gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
@@ -58,4 +57,4 @@ gem 'actionpack-action_caching'
 
 # To use debugger
 
-gem 'debugger'
+gem 'debugger', group: [:development, :test]

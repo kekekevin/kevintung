@@ -13,7 +13,7 @@ class ParItemsController < ApplicationController
   end
 
   def create
-    @par_item = ParItem.new(params[:par_item])
+    @par_item = ParItem.new(par_item_params)
     @par_item.save
 
     respond_to do |format|
@@ -27,7 +27,7 @@ class ParItemsController < ApplicationController
   end
 
   def update
-    @par_item = ParItem.update(params[:id], params[:par_item])   
+    @par_item = ParItem.update(params[:id], par_item_params)   
 
     redirect_to @par_item
   end
@@ -46,4 +46,11 @@ class ParItemsController < ApplicationController
       format.json { render json: @par_items }
     end
   end
+
+  private
+    
+  def par_item_params
+    params.required(:par_item).permit(:name, :description)
+  end
+
 end

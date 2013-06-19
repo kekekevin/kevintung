@@ -26,14 +26,14 @@ class ParSheetsController < ApplicationController
   end
 
   def create
-    @par_sheet = ParSheet.new(params[:par_sheet])
+    @par_sheet = ParSheet.new(par_sheet_params)
     @par_sheet.save
 
     redirect_to @par_sheet
   end
 
   def update
-    @par_sheet = ParSheet.update(params[:id], params[:par_sheet])
+    @par_sheet = ParSheet.update(params[:id], par_sheet_params)
 
     respond_to do |format|
       format.html { redirect_to @par_sheet }
@@ -45,6 +45,12 @@ class ParSheetsController < ApplicationController
     ParSheet.destroy(params[:id])
 
     redirect_to par_sheet_url
+  end
+
+  private
+
+  def par_sheet_params
+    params.required(:par_sheet).permit(:name, :par_sheet_item_attributes, :prep_sheets)
   end
 
 end
