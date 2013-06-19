@@ -1,7 +1,7 @@
 class ParSheetItemsController < ApplicationController
   
   def index
-    @par_sheet_items = ParSheetItem.find_all_by_par_sheet_id(params[:par_sheet_id])
+    @par_sheet_items = ParSheetItem.where :par_sheet_id => params[:par_sheet_id]
     
     render json: @par_sheet_items
   end
