@@ -7,7 +7,7 @@ Kevintung::Application.routes.draw do
     resources :par_sheet_items
   end
 
-  match ':action' => 'static#:action', as: :static
+  get ':action' => 'static#:action', as: :static
 
   root :to => 'static#home'
 
