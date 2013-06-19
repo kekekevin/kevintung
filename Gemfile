@@ -36,13 +36,6 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'newrelic_rpm'
 
-# rails gems to help rails 4 transition
-
-gem 'rails-observers'
-gem 'actionpack-page_caching'
-gem 'actionpack-action_caching'
-    
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
