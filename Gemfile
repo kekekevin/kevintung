@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
 
 group :development do
   gem 'rb-fsevent'
@@ -25,7 +25,7 @@ group :production do
   gem 'pg'
 end
 
-gem 'sass-rails',   '~> 4.0.0.rc2'
+gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'handlebars_assets'
 gem 'uglifier', '>= 1.0.3'
