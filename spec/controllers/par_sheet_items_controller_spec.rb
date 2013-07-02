@@ -12,7 +12,7 @@ describe ParSheetItemsController do
     it "should return all par sheet items" do
       get :index, :par_sheet_id => @par_sheet.id, :format => :json
 
-      response.body.should == [@par_sheet_item].to_json
+      expect(response.body).to eq [@par_sheet_item].to_json
     end
 
   end
@@ -32,8 +32,8 @@ describe ParSheetItemsController do
     it "should return the json object" do
       post :create, :par_sheet_id => @par_sheet.id, :par_sheet_item => FactoryGirl.attributes_for(:par_sheet_item), :format => :json
 
-      response.body.should == ParSheetItem.last.to_json
-      ParSheetItem.last.par_sheet_id.should == @par_sheet.id
+      expect(response.body).to eq ParSheetItem.last.to_json
+      expect(ParSheetItem.last.par_sheet_id).to eq @par_sheet.id
     end
 
   end
@@ -49,7 +49,7 @@ describe ParSheetItemsController do
     end
 
     it "should render json of the updated item" do
-      response.body.should == @par_sheet_item.to_json
+      expect(response.body).to eq @par_sheet_item.to_json
     end
 
   end

@@ -7,7 +7,7 @@ describe Slot do
   end
 
   it "should have a valid factory" do
-    FactoryGirl.create(:slot).should be_valid
+    expect(FactoryGirl.create(:slot)).to be_valid
   end
 
 end

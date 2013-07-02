@@ -7,8 +7,8 @@ describe ParSheetsController do
     
     get :index 
     
-    assigns(:par_sheets).should == [par_sheet]
-    response.should render_template(:index)
+    expect(assigns(:par_sheets)).to eq([par_sheet])
+    expect(response).to render_template(:index)
   end
 
   describe "show" do
@@ -20,14 +20,14 @@ describe ParSheetsController do
     it "should retrieve an existing par sheet" do
       get :show, :id => @par_sheet.id
 
-      assigns(:par_sheet).should == @par_sheet
-      response.should render_template(:show)
+      expect(assigns(:par_sheet)).to eq(@par_sheet)
+      expect(response).to render_template(:show)
     end
 
     it "should respond to json requests" do
       get :show, :id => @par_sheet.id, :format => :json
 
-      response.body.should == @par_sheet.to_json
+      expect(response.body).to eq(@par_sheet.to_json)
     end
 
   end
@@ -41,8 +41,8 @@ describe ParSheetsController do
     it "should retrieve an existing par sheet to edit" do
       get :edit, :id => @par_sheet.id
 
-      assigns(:par_sheet).should == @par_sheet
-      response.should render_template(:edit)
+      expect(assigns(:par_sheet)).to eq @par_sheet
+      expect(response).to render_template(:edit)
     end
 
   end
@@ -50,8 +50,8 @@ describe ParSheetsController do
   it "should create a new sheet" do
     get :new
 
-    assigns(:par_sheet).should be_a_new(ParSheet)
-    response.should render_template(:new)
+    expect(assigns(:par_sheet)).to be_a_new(ParSheet)
+    expect(response).to render_template(:new)
   end
 
   it "should create an par sheet from attributes" do
@@ -59,8 +59,8 @@ describe ParSheetsController do
       post :create, :par_sheet => FactoryGirl.attributes_for(:par_sheet)
     }.to change(ParSheet, :count).by(1)
 
-    assigns(:par_sheet).should_not be_nil
-    response.should redirect_to(ParSheet.last)
+    expect(assigns(:par_sheet)).not_to be_nil
+    expect(response).to redirect_to(ParSheet.last)
   end
 
   describe "update" do
@@ -73,17 +73,17 @@ describe ParSheetsController do
     it "should update an existing par sheet" do
       put :update, :id => @par_sheet.id, :par_sheet => FactoryGirl.attributes_for(:par_sheet)
 
-      assigns(:par_sheet).should_not be_nil
-      response.should redirect_to(@par_sheet)
+      expect(assigns(:par_sheet)).not_to be_nil
+      expect(response).to redirect_to(@par_sheet)
       @par_sheet.reload
-      @par_sheet.name.should_not == "existing"
-      @par_sheet.par_sheet_items[0].par_count.should_not == "3"
+      expect(@par_sheet.name).not_to eq "existing"
+      expect(@par_sheet.par_sheet_items[0].par_count).not_to eq "3"
     end
 
     it "should respond to json" do
       put :update, :id => @par_sheet.id, :par_sheet => FactoryGirl.attributes_for(:par_sheet), :format => :json
 
-      response.body.should == ParSheet.last.to_json
+      expect(response.body).to eq ParSheet.last.to_json
     end
 
   end
@@ -95,7 +95,7 @@ describe ParSheetsController do
       delete :destroy, :id => par_sheet.id
     }.to change(ParSheet, :count).by(-1)
 
-    response.should redirect_to par_sheet_url
+    expect(response).to redirect_to par_sheet_url
   end
 
 end

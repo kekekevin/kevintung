@@ -9,13 +9,13 @@ describe ParItemsController do
         post :create, :par_item => FactoryGirl.attributes_for(:par_item)
       }.to change(ParItem, :count).by(1)
 
-      response.should redirect_to(ParItem.last)
+      expect(response).to redirect_to(ParItem.last)
     end
 
     it "should respond to json" do
       post :create, par_item: FactoryGirl.attributes_for(:par_item), :format => :json
 
-      response.body.should == ParItem.last.to_json
+      expect(response.body).to eq ParItem.last.to_json
     end
 
   end
@@ -25,8 +25,8 @@ describe ParItemsController do
 
     get :show, :id => par_item.id
 
-    assigns(:par_item).should == par_item
-    response.should render_template(:show)
+    expect(assigns(:par_item)).to eq par_item
+    expect(response).to render_template(:show)
   end
 
   describe "index" do
@@ -38,25 +38,23 @@ describe ParItemsController do
     it "should retrieve all items to be shown" do
       get :index
 
-      assigns(:par_items).should == [@par_item]
-      response.should render_template(:index)
+      expect(assigns(:par_items)).to eq [@par_item]
+      expect(response).to render_template(:index)
     end
 
     it "should respond do json" do
       get :index, :format => :json
 
-      response.body.should == [@par_item].to_json
+      expect(response.body).to eq [@par_item].to_json
     end
 
   end
 
   it "should create a new item" do
-    ParItem.should_receive(:new)
-
     get :new
 
-    assigns(:par_item)
-    response.should render_template(:new)
+    expect(assigns(:par_item)).not_to be_nil
+    expect(response).to render_template(:new)
   end
 
   it "should retrieve existing item to edit" do
@@ -64,8 +62,8 @@ describe ParItemsController do
 
     get :edit, :id => par_item.id
 
-    assigns(:par_item).should == par_item
-    response.should render_template(:edit)
+    expect(assigns(:par_item)).to eq par_item
+    expect(response).to render_template(:edit)
   end
 
   it "should update an existing item" do
@@ -73,10 +71,10 @@ describe ParItemsController do
 
     put :update, :id => par_item.id, :par_item => FactoryGirl.attributes_for(:par_item) 
 
-    assigns(:par_item).should == par_item
-    response.should redirect_to par_item_path(par_item)
+    expect(assigns(:par_item)).to eq par_item
+    expect(response).to redirect_to par_item_path(par_item)
     par_item.reload
-    par_item.name.should_not eq("existing")
+    expect(par_item.name).not_to eq("existing")
   end
 
   it "should destroy an existing item" do
@@ -84,7 +82,7 @@ describe ParItemsController do
 
     delete :destroy, :id => par_item.id
 
-    response.should redirect_to par_items_url
+    expect(response).to redirect_to par_items_url
   end
 
 end

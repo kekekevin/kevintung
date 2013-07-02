@@ -7,7 +7,7 @@ describe ParSheet do
   end
 
   it "should have a valid factory" do
-    FactoryGirl.create(:par_sheet).should be_valid
+    expect(FactoryGirl.create(:par_sheet)).to be_valid
   end
 
   it "should have many ParSheetItems" do

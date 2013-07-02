@@ -7,7 +7,7 @@ describe Performer do
   end
 
   it "should have a valid factory" do
-    FactoryGirl.create(:performer).should be_valid
+    expect(FactoryGirl.create(:performer)).to be_valid
   end
 
 end

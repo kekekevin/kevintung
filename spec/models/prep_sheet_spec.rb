@@ -18,12 +18,12 @@ describe PrepSheet do
     end
 
     it "should create a prep sheet item for each par sheet item" do
-      @prep_sheet.prep_sheet_items.length.should == @par_sheet.par_sheet_items.length
-      @prep_sheet.prep_sheet_items[0].par_count.should == @par_sheet.par_sheet_items[0].par_count
+      expect(@prep_sheet.prep_sheet_items.length).to eq @par_sheet.par_sheet_items.length
+      expect(@prep_sheet.prep_sheet_items[0].par_count).to eq @par_sheet.par_sheet_items[0].par_count
     end
 
     it "should reference the same par sheet item" do
-      @prep_sheet.par_sheet.id.should == @par_sheet.id
+      expect(@prep_sheet.par_sheet.id).to eq @par_sheet.id
     end
 
   end
@@ -36,7 +36,7 @@ describe PrepSheet do
 
       prep_sheet = PrepSheet.make_calculated_prep_sheet( prep_sheet_attributes )
 
-      prep_sheet.prep_sheet_items[0].prep_count.should == BigDecimal.new("1")
+      expect(prep_sheet.prep_sheet_items[0].prep_count).to eq BigDecimal.new("1")
     end
 
   end

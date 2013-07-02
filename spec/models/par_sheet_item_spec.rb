@@ -3,7 +3,7 @@ require "spec_helper"
 describe ParSheetItem do
 
   it "should have a valid factory" do
-    FactoryGirl.create(:par_sheet_item).should be_valid
+    expect(FactoryGirl.create(:par_sheet_item)).to be_valid
   end
 
   it "should validate presence of par_count" do
@@ -19,15 +19,15 @@ describe ParSheetItem do
   end
 
   it "should be invalid with a negative par_count" do
-    FactoryGirl.build(:par_sheet_item, :par_count => "-1").should_not be_valid
+    expect(FactoryGirl.build(:par_sheet_item, :par_count => "-1")).not_to be_valid
   end
 
   it "should be invalid with a zero par_count" do
-    FactoryGirl.build(:par_sheet_item, :par_count => "0").should_not be_valid
+    expect(FactoryGirl.build(:par_sheet_item, :par_count => "0")).not_to be_valid
   end
 
   it "should be valid with a positive par_count" do
-    FactoryGirl.build(:par_sheet_item, :par_count => "2").should be_valid
+    expect(FactoryGirl.build(:par_sheet_item, :par_count => "2")).to be_valid
   end
 
 end
