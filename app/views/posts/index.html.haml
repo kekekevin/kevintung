@@ -1,0 +1,12 @@
+%h1 Blog
+
+%p so yeah...this is my blog section of the site
+
+- @posts.each do |post|
+
+  %h2
+    = post.title
+    at
+    = post.published_at.strftime "%m/%d/%Y %Z"
+  %p
+    = post.body

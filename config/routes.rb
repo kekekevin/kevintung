@@ -1,5 +1,6 @@
 Kevintung::Application.routes.draw do
 
+  resources :posts
   resources :par_items
 
   resources :par_sheets do
