@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628042606) do
+ActiveRecord::Schema.define(version: 20130711052745) do
 
   create_table "par_items", force: true do |t|
     t.text     "description"
