@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(:state => :published)
+    @posts = Post.published
   end
 
   def new
