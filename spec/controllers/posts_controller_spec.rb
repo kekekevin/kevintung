@@ -25,4 +25,18 @@ describe PostsController do
 
   end
 
+  describe "create" do
+
+    it "should save the new post" do
+      expect {
+        post :create, :post => FactoryGirl.attributes_for(:post)
+      }.to change(Post, :count).by(1)
+
+      expect(response).to redirect_to(posts_url)
+      expect(Post.last.state).to eq "published"
+      expect(Post.last.published_at).to be_within(5.seconds).of(Time.now)
+    end
+
+  end
+
 end
