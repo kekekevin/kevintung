@@ -8,4 +8,8 @@ class PostsController < ApplicationController
     @posts = Post.where(:state => :published)
   end
 
+  def new
+    @post = Post.new
+  end
+
 end

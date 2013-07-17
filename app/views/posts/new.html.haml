@@ -1,0 +1,10 @@
+%h1 Create a new blog post
+
+= simple_form_for @post do |post|
+
+  = post.input :title
+  = post.input :body, :input_html => { :rows => 15, :class => "span6" }
+
+  .form-actions
+    = post.submit "Post", :class => "btn-primary"
+    = link_to "Cancel", posts_url, :class => "btn btn-link"
