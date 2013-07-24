@@ -1,5 +1,6 @@
 Kevintung::Application.routes.draw do
 
+  devise_for :admins
   resources :posts
   resources :par_items
 
