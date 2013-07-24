@@ -16,10 +16,12 @@
           kevintung
       %hr
       .container-fluid
-        %p
-          = notice
-        %p
-          = alert
+        - if notice
+          %p.alert
+            = notice
+        - if alert
+          %p.alert.alert-error
+            = alert
         = yield
 
       %hr
