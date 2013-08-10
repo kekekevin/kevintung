@@ -1,5 +1,11 @@
 class ParItemsController < ApplicationController
 
+  before_action :get_item, :only => [:show, :edit]
+
+  def get_item
+    @par_item = ParItem.find(params[:id])
+  end
+
   def set_active_tab
     @active_tab = :projects
   end
@@ -9,7 +15,7 @@ class ParItemsController < ApplicationController
   end
 
   def show
-    @par_item = ParItem.find_by_id(params[:id])
+    
   end
 
   def create
@@ -23,7 +29,7 @@ class ParItemsController < ApplicationController
   end
 
   def edit
-    @par_item = ParItem.find_by_id(params[:id])
+
   end
 
   def update
