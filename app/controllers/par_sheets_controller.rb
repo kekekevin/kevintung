@@ -1,5 +1,11 @@
 class ParSheetsController < ApplicationController
 
+  before_action :get_sheet, :only => [:show, :edit]
+
+  def get_sheet
+    @par_sheet = ParSheet.find(params[:id])
+  end
+
   def set_active_tab
     @active_tab = :projects
   end
@@ -9,8 +15,6 @@ class ParSheetsController < ApplicationController
   end
 
   def show
-    @par_sheet = ParSheet.find_by_id(params[:id])
-
     respond_to do |format|
       format.html { @par_sheet }
       format.json { render :json => @par_sheet.to_json }
@@ -18,7 +22,7 @@ class ParSheetsController < ApplicationController
   end
 
   def edit
-    @par_sheet = ParSheet.find_by_id(params[:id])
+
   end
 
   def new
