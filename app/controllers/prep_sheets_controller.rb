@@ -26,7 +26,7 @@ class PrepSheetsController < ApplicationController
   end
 
   def destroy
-    PrepSheet.find_by_id_and_par_sheet_id(params[:id], params[:par_sheet_id]).try(:destroy)
+    @par_sheet.prep_sheets.find(params[:id]).destroy if @par_sheet.prep_sheets.exists?(params[:id])
 
     redirect_to par_sheet_prep_sheets_url(@par_sheet)
   end
