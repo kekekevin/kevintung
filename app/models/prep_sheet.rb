@@ -2,7 +2,7 @@ class PrepSheet < ActiveRecord::Base
 
   belongs_to :par_sheet
 
-  has_many :prep_sheet_items
+  has_many :prep_sheet_items, :dependent => :destroy
 
   accepts_nested_attributes_for :prep_sheet_items
 
