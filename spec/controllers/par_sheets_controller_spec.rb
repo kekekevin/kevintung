@@ -95,7 +95,7 @@ describe ParSheetsController do
       delete :destroy, :id => par_sheet.id
     }.to change(ParSheet, :count).by(-1)
 
-    expect(response).to redirect_to par_sheet_url
+    expect(response).to redirect_to par_sheets_url
   end
 
 end

@@ -1,6 +1,6 @@
 class ParSheet < ActiveRecord::Base
 
-  has_many :par_sheet_items
+  has_many :par_sheet_items, :dependent => :destroy
   has_many :prep_sheets
 
   validates :name, presence: true

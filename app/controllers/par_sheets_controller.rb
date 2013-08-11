@@ -48,7 +48,7 @@ class ParSheetsController < ApplicationController
   def destroy
     ParSheet.destroy(params[:id])
 
-    redirect_to par_sheet_url
+    redirect_to par_sheets_url
   end
 
   private
