@@ -1,16 +1,12 @@
 class PrepSheetsController < ApplicationController
 
-  before_action :get_par_sheet, :only => [:index, :new, :destroy]
-
-  def get_par_sheet
-    @par_sheet = ParSheet.find(params[:par_sheet_id])
-  end
-
   def set_active_tab
     @active_tab = :projects
   end
   
   def index
+    @par_sheet = ParSheet.find(params[:par_sheet_id])
+
     @prep_sheets = @par_sheet.prep_sheets
   end
 
@@ -22,10 +18,14 @@ class PrepSheetsController < ApplicationController
   end
 
   def new
+    @par_sheet = ParSheet.find(params[:par_sheet_id])
+
     @prep_sheet = PrepSheet.new_from_par_sheet(@par_sheet)
   end
 
   def destroy
+    @par_sheet = ParSheet.find(params[:par_sheet_id])
+
     @par_sheet.prep_sheets.find(params[:id]).destroy if @par_sheet.prep_sheets.exists?(params[:id])
 
     redirect_to par_sheet_prep_sheets_url(@par_sheet)
