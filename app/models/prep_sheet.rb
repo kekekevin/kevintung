@@ -7,7 +7,7 @@ class PrepSheet < ActiveRecord::Base
   accepts_nested_attributes_for :prep_sheet_items
 
   def self.new_from_par_sheet(par_sheet)
-    prep_sheet = PrepSheet.new
+    prep_sheet = par_sheet.prep_sheets.create
     prep_sheet.prep_sheet_items = []
     
     par_sheet.par_sheet_items.each do |i|
@@ -18,10 +18,7 @@ class PrepSheet < ActiveRecord::Base
       prep_sheet.prep_sheet_items.push( item )
     end
 
-    prep_sheet.par_sheet = par_sheet
-
     prep_sheet
-
   end
 
   def self.make_calculated_prep_sheet(prep_sheet_attributes)
