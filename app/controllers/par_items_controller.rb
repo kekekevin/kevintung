@@ -1,5 +1,7 @@
 class ParItemsController < ApplicationController
 
+  respond_to :html, :json
+
   def set_active_tab
     @active_tab = :projects
   end
@@ -16,10 +18,7 @@ class ParItemsController < ApplicationController
     @par_item = ParItem.new(par_item_params)
     @par_item.save
 
-    respond_to do |format|
-      format.html { redirect_to @par_item }
-      format.json { render json: @par_item }
-    end
+    respond_with(@par_item)
   end
 
   def edit
@@ -41,10 +40,7 @@ class ParItemsController < ApplicationController
   def index
     @par_items = ParItem.all
 
-    respond_to do |format|
-      format.html { @par_items }
-      format.json { render json: @par_items }
-    end
+    respond_with @par_items
   end
 
   private

@@ -83,7 +83,7 @@ describe ParSheetsController do
     it "should respond to json" do
       put :update, :id => @par_sheet.id, :par_sheet => FactoryGirl.attributes_for(:par_sheet), :format => :json
 
-      expect(response.body).to eq ParSheet.last.to_json
+      expect(response.status).to eq 204
     end
 
   end

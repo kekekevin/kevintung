@@ -1,5 +1,7 @@
 class ParSheetsController < ApplicationController
 
+  respond_to :html, :json
+
   def set_active_tab
     @active_tab = :projects
   end
@@ -11,10 +13,7 @@ class ParSheetsController < ApplicationController
   def show
     @par_sheet = ParSheet.find(params[:id])
 
-    respond_to do |format|
-      format.html { @par_sheet }
-      format.json { render :json => @par_sheet.to_json }
-    end
+    respond_with(@par_sheet)
   end
 
   def edit
@@ -35,10 +34,7 @@ class ParSheetsController < ApplicationController
   def update
     @par_sheet = ParSheet.update(params[:id], par_sheet_params)
 
-    respond_to do |format|
-      format.html { redirect_to @par_sheet }
-      format.json { render json: @par_sheet }
-    end
+    respond_with(@par_sheet)
   end
 
   def destroy
