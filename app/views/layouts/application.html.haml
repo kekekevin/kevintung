@@ -10,7 +10,7 @@
       .masthead
         %ul.nav.nav-pills.pull-right
           - { :home => "Home", :projects => "Projects", :posts => "Blog", :connect => "Connect" }.each do |tab, tab_display|
-            %li{ :class => (tab.to_s == @active_tab.to_s) ? "active" : "" }
+            %li{ :class => (tab.to_s == yield( :active_tab )) ? "active" : "" }
               = link_to tab_display, static_path(tab) 
         %h3.muted
           kevintung

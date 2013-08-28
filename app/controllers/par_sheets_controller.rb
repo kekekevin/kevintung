@@ -2,10 +2,6 @@ class ParSheetsController < ApplicationController
 
   respond_to :html, :json
 
-  def set_active_tab
-    @active_tab = :projects
-  end
-  
   def index 
     @par_sheets = ParSheet.all
   end

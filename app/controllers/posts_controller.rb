@@ -2,10 +2,6 @@ class PostsController < ApplicationController
 
   before_action :authenticate_admin!, :except => [:index]
 
-  def set_active_tab
-    @active_tab = :posts
-  end
-
   def index
     @posts = Post.published
   end
