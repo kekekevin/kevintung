@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_admin!, :except => [:index]
+  before_action :authenticate_admin!, :except => [:index, :show]
 
   def index
     @posts = Post.published
@@ -8,6 +8,10 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def create

@@ -1,0 +1,7 @@
+%h1
+  = @post.title
+  written
+  = time_ago_in_words @post.published_at
+  ago
+%p
+  = @post.body

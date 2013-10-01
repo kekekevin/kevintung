@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
     state == :published
   end
 
+  def to_param
+    "#{id} #{title}".parameterize
+  end
+
 end

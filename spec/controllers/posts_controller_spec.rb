@@ -15,6 +15,19 @@ describe PostsController do
 
   end
 
+  describe "show" do
+
+    it "returns the specified post" do
+      published_post = FactoryGirl.create(:post, :state => :published)
+
+      get :show, :id => published_post.id
+
+      expect(assigns(:post)).to eq published_post
+      expect(response).to render_template(:show)
+    end
+
+  end
+
   describe "admin functions" do
 
     before do
