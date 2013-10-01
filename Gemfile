@@ -38,7 +38,8 @@ gem 'haml-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'newrelic_rpm'
-gem 'devise'
+gem 'devise', '3.0.3'
+gem 'friendly_id', '5.0.0.rc2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -6,7 +6,7 @@ describe PostsController do
 
     it "returns all published posts" do
       published_post = FactoryGirl.create(:post, :state => :published)
-      drafted_post = FactoryGirl.create(:post, :state => :drafted)
+      drafted_post = FactoryGirl.create(:post, :state => :drafted, :slug => "something unique")
       
       get :index
 

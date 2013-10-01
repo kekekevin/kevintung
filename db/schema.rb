@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724014910) do
+ActiveRecord::Schema.define(version: 20131001024302) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -76,7 +76,10 @@ ActiveRecord::Schema.define(version: 20130724014910) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
 
   create_table "prep_sheet_items", force: true do |t|
     t.integer  "prep_sheet_id"

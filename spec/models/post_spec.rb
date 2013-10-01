@@ -24,8 +24,8 @@ describe Post do
     
     it "should return published posts in descending order" do
       post1 = FactoryGirl.create(:post, :state => :published, :published_at => Time.now)
-      post2 = FactoryGirl.create(:post, :state => :drafted)
-      post3 = FactoryGirl.create(:post, :state => :published, :published_at => Time.now + 1.day)
+      post2 = FactoryGirl.create(:post, :state => :drafted, :slug => "something")
+      post3 = FactoryGirl.create(:post, :state => :published, :published_at => Time.now + 1.day, :slug => "else")
 
       expect(Post.published).to eq [post3, post1]
     end
