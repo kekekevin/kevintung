@@ -42,7 +42,7 @@ class ParSheetsController < ApplicationController
   private
 
   def par_sheet_params
-    params.required(:par_sheet).permit(:name, :par_sheet_item_attributes, :prep_sheets)
+    params.required(:par_sheet).permit(:id, :name, :prep_sheets, :par_sheet_items_attributes => [:par_item_id, :id, :par_count, :_destroy])
   end
 
 end

@@ -34,7 +34,7 @@ class PrepSheetsController < ApplicationController
   private
 
   def prep_sheet_params
-    params.required(:prep_sheet).permit(:par_sheet_id, :prep_sheet_item_attributes)
+    params.require(:prep_sheet).permit(:par_sheet_id, :prep_sheet_items_attributes => [ :count, :par_count, :par_item_id ])
   end
 
 end
