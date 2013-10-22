@@ -78,14 +78,23 @@ describe PrepSheetsController do
 
   describe "show" do
 
+    before(:each) do
+      @par_sheet = FactoryGirl.create(:par_sheet)
+      @prep_sheet = FactoryGirl.create(:prep_sheet, :par_sheet_id => @par_sheet.id)
+      @prep_sheet_item = FactoryGirl.create(:prep_sheet_item, :prep_sheet_id => @prep_sheet.id, :par_item_id => 1)
+    end
+
     it "should return the existing prep sheet" do
-      par_sheet = FactoryGirl.create(:par_sheet)
-      prep_sheet = FactoryGirl.create(:prep_sheet, :par_sheet_id => par_sheet.id)
+      get :show, :par_sheet_id => @par_sheet.id, :id => @prep_sheet.id
 
-      get :show, :par_sheet_id => par_sheet.id, :id => prep_sheet.id
-
-      expect(assigns(:prep_sheet)).to eq(prep_sheet)
+      expect(assigns(:prep_sheet)).to eq(@prep_sheet)
       expect(response).to render_template(:show)
+    end
+
+    it "should export to csv format" do
+      get :show, :par_sheet_id => @par_sheet.id, :id => @prep_sheet.id, :format => :csv
+
+      expect(response.body).to eq("count,item\n#{@prep_sheet_item.count},#{@prep_sheet_item.par_item.name}\n")
     end
 
   end

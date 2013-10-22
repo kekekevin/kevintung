@@ -42,4 +42,9 @@ describe PrepSheetItem do
     should belong_to(:par_item)
   end
 
+  it "should render csv" do
+    prep_sheet_item = FactoryGirl.create(:prep_sheet_item)
+    expect(PrepSheetItem.to_csv).to eq "#{prep_sheet_item.count},#{prep_sheet_item.par_item.name}\n"
+  end
+
 end

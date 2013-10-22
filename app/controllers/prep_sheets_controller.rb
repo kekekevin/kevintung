@@ -29,6 +29,10 @@ class PrepSheetsController < ApplicationController
 
   def show
     @prep_sheet = PrepSheet.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.csv { render text: @prep_sheet.to_csv }
+    end
   end
 
   private

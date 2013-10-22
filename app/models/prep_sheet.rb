@@ -28,4 +28,11 @@ class PrepSheet < ActiveRecord::Base
     prep_sheet
   end
 
+  def to_csv
+    export = CSV.generate do |csv|
+      csv << ["count", "item"]
+    end
+    export << prep_sheet_items.to_csv
+  end
+
 end

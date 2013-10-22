@@ -3,7 +3,7 @@ class ParSheet < ActiveRecord::Base
   has_many :par_sheet_items, :dependent => :destroy
   has_many :prep_sheets
 
-  validates :name, presence: true
+  validates :name, :presence => true
   
   accepts_nested_attributes_for :par_sheet_items, :allow_destroy => true
 
