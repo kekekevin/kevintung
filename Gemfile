@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby "2.1.0"
 
 gem 'rails', '4.0.0'
 
@@ -24,7 +24,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.17.1'
   gem 'rails_12factor'
 end
 
@@ -55,4 +55,4 @@ gem 'friendly_id', '5.0.0.rc2'
 
 # To use debugger
 
-gem 'debugger', group: [:development, :test]
+gem 'debugger', '1.6.5', group: [:development, :test]
