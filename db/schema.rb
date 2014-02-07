@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207022247) do
+ActiveRecord::Schema.define(version: 20140207024643) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 20140207022247) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
+
+  create_table "posts_tags", id: false, force: true do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id",  null: false
+  end
+
+  add_index "posts_tags", ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id"
+  add_index "posts_tags", ["tag_id", "post_id"], name: "index_posts_tags_on_tag_id_and_post_id"
 
   create_table "prep_sheet_items", force: true do |t|
     t.integer  "prep_sheet_id"
