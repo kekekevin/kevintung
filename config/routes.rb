@@ -3,6 +3,7 @@ Kevintung::Application.routes.draw do
   devise_for :admins
   resources :posts
   resources :par_items
+  resources :tags
 
   resources :par_sheets do
     resources :prep_sheets
