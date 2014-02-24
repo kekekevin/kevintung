@@ -50,4 +50,55 @@ describe TagsController do
     
   end
   
+  describe "edit" do
+    
+    context "with existing tag" do
+      
+      let!(:tag) { FactoryGirl.create(:tag) }
+      
+      it "retrieves the tag" do
+        get :edit, :id => tag.id
+        
+        expect(assigns :tag).to eq tag
+      end
+      
+    end
+    
+  end
+  
+  describe "update" do
+    
+    context "with existing tag" do
+      
+      let!(:tag) { FactoryGirl.create(:tag) }
+      
+      it "updates the tag" do
+        put :update, :id => tag.id, :tag => FactoryGirl.attributes_for(:tag, :name => "existing")
+        
+        tag.reload
+        expect(tag.name).to eq "existing"
+      end
+      
+      it "redirects to tags" do
+        put :update, :id => tag.id, :tag => FactoryGirl.attributes_for(:tag)
+        
+        expect(response).to redirect_to(tags_url)
+      end
+      
+    end
+    
+  end
+  
+  describe "index" do
+    
+    let!(:tag) { FactoryGirl.create(:tag) }
+    
+    it "shows all tags" do
+      get :index
+      
+      expect(assigns :tags).to eq [tag]
+    end
+    
+  end
+  
 end

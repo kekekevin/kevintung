@@ -17,6 +17,20 @@ class TagsController < ApplicationController
     redirect_to tags_url
   end
   
+  def edit
+    @tag = Tag.find params[:id]
+  end
+  
+  def update
+    Tag.update(params[:id], tag_params)
+    
+    redirect_to tags_url
+  end
+  
+  def index
+    @tags = Tag.all
+  end
+  
   private
   
   def tag_params
