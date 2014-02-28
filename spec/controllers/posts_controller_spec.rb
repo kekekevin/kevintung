@@ -38,10 +38,18 @@ describe PostsController do
 
     describe "new" do
 
-      it "should initialize a new post" do
+      it "initializes a new post" do
         get :new
         
         expect(assigns(:post)).not_to be_nil
+      end
+      
+      it "populates available tags" do
+        tag = FactoryGirl.create(:tag)
+        
+        get :new
+        
+        expect(assigns(:tags)).to eq [tag]
       end
 
     end
