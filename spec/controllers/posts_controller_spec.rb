@@ -28,7 +28,7 @@ describe PostsController do
 
   end
 
-  describe "admin functions" do
+  describe "admin function" do
 
     before do
 
@@ -54,18 +54,45 @@ describe PostsController do
 
     end
 
-    describe "create" do
+    describe "post create" do
+      
+      context "with an existing tag" do
+        
+        let(:tag) { FactoryGirl.create(:tag) }
+        let!(:new_post) { FactoryGirl.attributes_for(:post, :tag_ids => [tag.id]) }
 
-      it "should save the new post" do
-        expect {
-          post :create, :post => FactoryGirl.attributes_for(:post)
-        }.to change(Post, :count).by(1)
-
-        expect(response).to redirect_to(posts_url)
-        expect(Post.last.state).to eq "published"
-        expect(Post.last.published_at).to be_within(5.seconds).of(Time.now)
+        it "saves the new post" do
+          expect {
+            post :create, :post => new_post
+          }.to change(Post, :count).by(1)
+        end
+        
+        it "redirects to posts" do
+          post :create, :post => new_post
+          
+          expect(response).to redirect_to(posts_url)
+        end
+        
+        it "saves the post with a published state" do
+          post :create, :post => new_post
+          
+          expect(Post.last.state).to eq "published"
+        end
+        
+        it "saves the publish time" do
+          post :create, :post => new_post
+          
+          expect(Post.last.published_at).to be_within(5.seconds).of(Time.now)
+        end
+        
+        it "saves the associated tag" do
+          post :create, :post => new_post
+          
+          expect(Post.last.tags).to eq [tag]
+        end
+        
       end
-
+        
     end
 
   end
