@@ -230,6 +230,7 @@ DEPENDENCIES
   pg (= 0.17.1)
   rails (= 4.0.0)
   rails_12factor
+  rake
   rb-fsevent
   rspec-rails
   sass-rails (~> 4.0.0)
@@ -237,3 +238,6 @@ DEPENDENCIES
   simple_form (~> 3.0.0.rc)
   sqlite3
   uglifier (>= 1.0.3)
+
+BUNDLED WITH
+   1.10.6
