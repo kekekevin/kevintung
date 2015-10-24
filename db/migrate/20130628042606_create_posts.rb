@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :state
       t.datetime :published_at
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
