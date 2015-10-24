@@ -1,4 +1,4 @@
-kevintung
+kevintung [![Build Status](https://travis-ci.org/kekekevin/kevintung.svg?branch=master)](https://travis-ci.org/kekekevin/kevintung)
 =========
 
 kevintung
