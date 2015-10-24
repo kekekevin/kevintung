@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "2.1.0"
+ruby "2.2.3"
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.4'
 
 group :development do
   gem 'rb-fsevent'
@@ -39,8 +39,8 @@ gem 'haml-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'newrelic_rpm'
-gem 'devise', '3.0.3'
-gem 'friendly_id', '5.0.0.rc2'
+gem 'devise', '3.5.2'
+gem 'friendly_id', '5.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -53,7 +53,3 @@ gem 'friendly_id', '5.0.0.rc2'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-
-gem 'debugger', '1.6.5', group: [:development, :test]
