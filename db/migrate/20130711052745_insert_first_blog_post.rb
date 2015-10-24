@@ -10,6 +10,7 @@ class InsertFirstBlogPost < ActiveRecord::Migration
     the db entry, but oh well.  there's a bunch of stuff on my todo list for this site that i'll eventually get around to.  what's going to sap my time next is \
     replacing the screen for my nexus 7.  nexus 7's apparently have very weak glass faces.  mine was shattered completely with a 1ft fall to the ground.  the \
     glass screen and digitizer isn't too expensive so i'll just opt to fix it."
+    p.slug = "first-blog-post"
     Post.create p.attributes
   end
 
